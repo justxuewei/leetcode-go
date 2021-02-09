@@ -68,4 +68,3 @@ func goBookSolution(nums []int) int {
 	}
 	return c
 }
->>>>>>> c944218be1567dc33e48ab30dfb53785e2aa5038
