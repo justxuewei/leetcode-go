@@ -1,47 +1,71 @@
 package chapter6
 
+import "math"
+
 func thirdMax(nums []int) int {
-	// length of nums less than 3, return the maximum value
-	if len(nums) < 3 {
-		max := nums[0]
-		for i:=1; i<len(nums);i++ {
-			if max < nums[i] {
-				max = nums[i]
+
+	topArr := make([]int, 3)
+
+	topArr[0] = nums[0]
+	length := 1
+	startIndex := 0
+
+	for i:=1; i<len(nums); i++ {
+		if length == 3 {
+			startIndex = i
+			break
+		}
+		flag := false
+		for j:=0; j<length; j++ {
+			if nums[i] == topArr[j] {
+				flag = true
+				break
 			}
 		}
-		return max
-	}
-
-	max := nums[0]
-	for _, v := range nums {
-		if max < v {
-			max = v
+		if !flag {
+			topArr[length] = nums[i]
+			length++
 		}
 	}
 
-	secondMax := 0
-	if nums[0] != max {
-		secondMax = nums[0]
-	} else {
-		secondMax = nums[1]
-	}
-	for _, v := range nums {
-		if max > v && secondMax < v {
-			secondMax = v
+	quickSort(topArr[:length])
+	if length < 3 { return topArr[length-1] }
+
+	for i:=startIndex; i<len(nums); i++ {
+		switch {
+		case nums[i] > topArr[0] && nums[i] < topArr[1]:
+			topArr[0] = nums[i]
+		case nums[i] > topArr[1] && nums[i] < topArr[2]:
+			topArr[0] = topArr[1]
+			topArr[1] = nums[i]
+		case nums[i] > topArr[2]:
+			topArr[0] = topArr[1]
+			topArr[1] = topArr[2]
+			topArr[2] = nums[i]
 		}
 	}
 
-	thirdMax := 0
-	for _, v := range nums {
-		if v < secondMax {
-			thirdMax = v
-		}
-	}
-	for _, v := range nums {
-		if secondMax > v && thirdMax < v {
-			thirdMax = v
-		}
-	}
-
-	return thirdMax
+	return topArr[0]
 }
+
+// ref: https://books.halfrost.com/leetcode/ChapterFour/0414.Third-Maximum-Number/
+func goBookSolution(nums []int) int {
+	a, b, c := math.MinInt64, math.MinInt64, math.MinInt64
+	for _, v := range nums {
+		if v > a {
+			c = b
+			b = a
+			a = v
+		} else if v < a && v > b {
+			c = b
+			b = v
+		} else if v < b && v > c {
+			c = v
+		}
+	}
+	if c == math.MinInt64 {
+		return a
+	}
+	return c
+}
+>>>>>>> c944218be1567dc33e48ab30dfb53785e2aa5038
