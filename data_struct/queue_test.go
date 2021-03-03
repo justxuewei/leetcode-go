@@ -7,14 +7,12 @@ import (
 
 func printQueueInt(queue *Queue) {
 	if queue.head == queue.tail {
-		return
+		fmt.Print("Empty Queue")
 	} else if queue.head < queue.tail {
 		for i:=queue.head; i<queue.tail; i++ {
 			intV, _ := queue.arr[i].(int)
 			fmt.Printf("%d\t", intV)
 		}
-		fmt.Print()
-		return
 	} else {
 		for i:=queue.head; i<len(queue.arr); i++ {
 			intV, _ := queue.arr[i].(int)
@@ -24,8 +22,8 @@ func printQueueInt(queue *Queue) {
 			intV, _ := queue.arr[i].(int)
 			fmt.Printf("%d\t", intV)
 		}
-		fmt.Print()
 	}
+	fmt.Println()
 }
 
 func TestQueue(t *testing.T) {
@@ -34,4 +32,21 @@ func TestQueue(t *testing.T) {
 	_ = queue.Enqueue(2)
 	_ = queue.Enqueue(3)
 	printQueueInt(queue)
+	t.Log(queue.Len())
+	first, _ := queue.Dequeue()
+	firstInt, _ := first.(int)
+	t.Logf("first: %d", firstInt)
+	second, _ := queue.Dequeue()
+	secondInt, _ := second.(int)
+	t.Logf("second: %d", secondInt)
+	printQueueInt(queue)
+	t.Log(queue.Len())
+	_ = queue.Enqueue(4)
+	_ = queue.Enqueue(5)
+	printQueueInt(queue)
+	_, _ = queue.Dequeue()
+	_, _ = queue.Dequeue()
+	_, _ = queue.Dequeue()
+	printQueueInt(queue)
+	t.Log(queue.Len())
 }

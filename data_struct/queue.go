@@ -13,7 +13,7 @@ type Queue struct {
 
 func NewQueue(length int) *Queue {
 	queue := &Queue{
-		make([]interface{}, length),
+		make([]interface{}, length+1),
 		0,
 		0,
 	}
@@ -37,4 +37,13 @@ func (queue *Queue) Dequeue() (interface{}, error) {
 	elem := queue.arr[queue.head]
 	queue.head = (queue.head + 1) % len(queue.arr)
 	return elem, nil
+}
+
+func (queue *Queue) Len() int {
+	head := queue.head
+	tail := queue.tail
+	if head > tail {
+		tail += len(queue.arr)
+	}
+	return tail - head
 }

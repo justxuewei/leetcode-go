@@ -1,6 +1,13 @@
 package btree
 
-import ds "github.com/xavier-niu/leetcode/data_struct"
+import (
+	"errors"
+	ds "github.com/xavier-niu/leetcode/data_struct"
+)
+
+const treeNodeQueueCapacity = 100
+
+var EmptyTree = errors.New("the amount of tree node should greater than 1")
 
 type TreeNode struct {
 	Val int
@@ -11,19 +18,33 @@ type TreeNode struct {
 // ref: https://stackoverflow.com/questions/6878590/the-maximum-value-for-an-int-type-in-go
 const MinInt = -int(^uint(0) >> 1) - 1
 
-func generateTree(arr []int) *TreeNode {
-	if len(arr) == 0 { return nil }
+func generateTree(arr []int) (*TreeNode, error) {
+	if len(arr) == 0 { return nil, EmptyTree }
 
 	root := &TreeNode{Val: arr[0]}
-	if len(arr) == 1 { return root }
 
-	stack := ds.NewStack(100)
-	stack.Push(root)
-
-	idx := 1
-	for idx < len(arr) {
-
+	queue := ds.NewQueue(treeNodeQueueCapacity)
+	err := queue.Enqueue(root)
+	if err != nil {
+		return nil, err
 	}
 
-	return root
+	idx := 1
+	for queue.Len() > 0 {
+		node, err := queue.Dequeue()
+		if err != nil {
+			return nil, err
+		}
+
+		if len(arr) == idx + 1 {
+			break
+		}
+		if arr[idx] == MinInt {
+			
+		}
+
+		idx += 2
+	}
+
+	return root, nil
 }
