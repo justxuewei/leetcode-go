@@ -3,6 +3,7 @@ package btree
 import (
 	"errors"
 	ds "github.com/xavier-niu/leetcode/data_struct"
+	"log"
 )
 
 const treeNodeQueueCapacity = 100
@@ -16,9 +17,9 @@ type TreeNode struct {
 }
 
 // ref: https://stackoverflow.com/questions/6878590/the-maximum-value-for-an-int-type-in-go
-const MinInt = -int(^uint(0) >> 1) - 1
+const Null = -int(^uint(0) >> 1) - 1
 
-func generateTree(arr []int) (*TreeNode, error) {
+func GenerateBinaryTree(arr []int) (*TreeNode, error) {
 	if len(arr) == 0 { return nil, EmptyTree }
 
 	root := &TreeNode{Val: arr[0]}
@@ -31,19 +32,36 @@ func generateTree(arr []int) (*TreeNode, error) {
 
 	idx := 1
 	for queue.Len() > 0 {
-		node, err := queue.Dequeue()
+		nodeIface, err := queue.Dequeue()
 		if err != nil {
 			return nil, err
 		}
 
-		if len(arr) == idx + 1 {
-			break
-		}
-		if arr[idx] == MinInt {
-			
+		node, ok := nodeIface.(*TreeNode)
+		if !ok {
+			log.Fatal("`nodeIface` should be an instance of *TreeNode.")
 		}
 
-		idx += 2
+		// Left
+		if len(arr) == idx { break }
+		if arr[idx] != Null {
+			node.Left = &TreeNode{Val: arr[idx]}
+			err = queue.Enqueue(node.Left)
+			if err != nil {
+				return nil, err
+			}
+		}
+		idx++
+		// Right
+		if len(arr) == idx { break }
+		if arr[idx] != Null {
+			node.Right = &TreeNode{Val: arr[idx]}
+			err = queue.Enqueue(node.Right)
+			if err != nil {
+				return nil, err
+			}
+		}
+		idx++
 	}
 
 	return root, nil
