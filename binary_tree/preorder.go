@@ -1,11 +1,10 @@
-package traversal
+package btree
 
 import (
-	btree "github.com/xavier-niu/leetcode/binary_tree"
 	ds "github.com/xavier-niu/leetcode/data_struct"
 )
 
-func preorderTraversalRecursively(root *btree.TreeNode, output []int) []int {
+func preorderTraversalRecursively(root *TreeNode, output []int) []int {
 	if root == nil { return output }
 	if output == nil {
 		output = make([]int, 0)
@@ -16,7 +15,7 @@ func preorderTraversalRecursively(root *btree.TreeNode, output []int) []int {
 	return output
 }
 
-func preorderTraversalIteratively(root *btree.TreeNode) []int {
+func preorderTraversalIteratively(root *TreeNode) []int {
 	if root == nil { return nil }
 	output := make([]int, 0)
 
@@ -28,9 +27,9 @@ func preorderTraversalIteratively(root *btree.TreeNode) []int {
 		stack.Push(currentNode)
 		if currentNode.Left == nil {
 			// no left node
-			var tmpNode *btree.TreeNode
+			var tmpNode *TreeNode
 			for {
-				tmpNode, _ = stack.Pop().(*btree.TreeNode)
+				tmpNode, _ = stack.Pop().(*TreeNode)
 				if tmpNode == nil || tmpNode.Right != nil { break }
 			}
 			if tmpNode == nil { // there is no more nodes in stack

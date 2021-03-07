@@ -1,24 +1,23 @@
-package traversal
+package btree
 
 import (
-	btree "github.com/xavier-niu/leetcode/binary_tree"
 	ds "github.com/xavier-niu/leetcode/data_struct"
 )
 
-func InorderTraversalRecursively(root *btree.TreeNode) []int {
+func InorderTraversalRecursively(root *TreeNode) []int {
 	output := make([]int, 0)
 	inorderTraversalRecursively(root, &output)
 	return output
 }
 
-func inorderTraversalRecursively(node *btree.TreeNode, output *[]int) {
+func inorderTraversalRecursively(node *TreeNode, output *[]int) {
 	if node == nil { return }
 	inorderTraversalRecursively(node.Left, output)
 	*output = append(*output, node.Val)
 	inorderTraversalRecursively(node.Right, output)
 }
 
-func inorderTraversalIteratively(root *btree.TreeNode) []int {
+func inorderTraversalIteratively(root *TreeNode) []int {
 	if root == nil { return nil }
 
 	var output []int
@@ -29,9 +28,9 @@ func inorderTraversalIteratively(root *btree.TreeNode) []int {
 		stack.Push(crtNode)
 		if crtNode.Left == nil {
 			// pop node from stack
-			var tmpNode *btree.TreeNode
+			var tmpNode *TreeNode
 			for {
-				tmpNode, _ = stack.Pop().(*btree.TreeNode)
+				tmpNode, _ = stack.Pop().(*TreeNode)
 				if tmpNode == nil { return output }
 				output = append(output, tmpNode.Val)
 				if tmpNode.Right != nil {
