@@ -24,6 +24,11 @@ func (stack *Stack) Push(element interface{}) {
 	stack.arr = append(stack.arr, element)
 }
 
+func (stack *Stack) TopElement() interface{} {
+	if stack.Len() == 0 { return nil }
+	return stack.arr[stack.Len()-1]
+}
+
 func (stack *Stack) Len() int {
 	return len(stack.arr)
 }
