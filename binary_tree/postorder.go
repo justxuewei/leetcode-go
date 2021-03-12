@@ -1,6 +1,7 @@
 package btree
 
 import (
+	"fmt"
 	ds "github.com/xavier-niu/leetcode/data_struct"
 )
 
@@ -23,22 +24,32 @@ func postorderTraversalIteratively(root *TreeNode) []int {
 	stack := ds.NewStackWithoutCap()
 	crtNode := root
 	for crtNode != nil {
-		stack.Push(postorderTraversalStackItem{node: crtNode, visitedRight: false})
-		if crtNode.Left != nil {
+		fmt.Println(crtNode)
+
+		topItem, ok := stack.TopElement().(postorderTraversalStackItem)
+		if !ok || topItem.node != crtNode {
+			stack.Push(postorderTraversalStackItem{node: crtNode, visitedRight: false})
+			topItem, _ = stack.TopElement().(postorderTraversalStackItem)
+		}
+		if !topItem.visitedRight && crtNode.Left != nil {
 			crtNode = crtNode.Left
 			continue
 		}
 
-		topItem, _ := stack.TopElement().(postorderTraversalStackItem)
 		if !topItem.visitedRight && crtNode.Right != nil {
 			topItem.visitedRight = true
 			crtNode = crtNode.Right
 			continue
 		}
+		topItem.visitedRight = true
 		output = append(output, crtNode.Val)
 		_ = stack.Pop()
-		topItem, _ = stack.TopElement().(postorderTraversalStackItem)
-		crtNode = topItem.node
+		topItem, ok = stack.TopElement().(postorderTraversalStackItem)
+		if ok {
+			crtNode = topItem.node
+		} else {
+			crtNode = nil
+		}
 	}
 	return output
 }
