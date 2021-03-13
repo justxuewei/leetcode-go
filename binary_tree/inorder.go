@@ -30,8 +30,9 @@ func inorderTraversalIteratively(root *TreeNode) []int {
 			// pop node from stack
 			var tmpNode *TreeNode
 			for {
-				tmpNode, _ = stack.Pop().(*TreeNode)
-				if tmpNode == nil { return output }
+				topElem, err := stack.Pop()
+				if err != nil { return output }
+				tmpNode, _ = topElem.(*TreeNode)
 				output = append(output, tmpNode.Val)
 				if tmpNode.Right != nil {
 					crtNode = tmpNode.Right

@@ -29,8 +29,10 @@ func preorderTraversalIteratively(root *TreeNode) []int {
 			// no left node
 			var tmpNode *TreeNode
 			for {
-				tmpNode, _ = stack.Pop().(*TreeNode)
-				if tmpNode == nil || tmpNode.Right != nil { break }
+				elem, err := stack.Pop()
+				if err != nil { break }
+				tmpNode, _ = elem.(*TreeNode)
+				if tmpNode.Right != nil { break }
 			}
 			if tmpNode == nil { // there is no more nodes in stack
 				break

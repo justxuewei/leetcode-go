@@ -1,7 +1,6 @@
 package btree
 
 import (
-	"fmt"
 	ds "github.com/xavier-niu/leetcode/data_struct"
 )
 
@@ -22,33 +21,37 @@ func postorderTraversalIteratively(root *TreeNode) []int {
 
 	output := make([]int, 0)
 	stack := ds.NewStackWithoutCap()
-	crtNode := root
-	for crtNode != nil {
-		fmt.Println(crtNode)
+	stack.Push(&postorderTraversalStackItem{node: root, visitedRight: false})
+	crtNode := root.Left
 
-		topItem, ok := stack.TopElement().(postorderTraversalStackItem)
-		if !ok || topItem.node != crtNode {
-			stack.Push(postorderTraversalStackItem{node: crtNode, visitedRight: false})
-			topItem, _ = stack.TopElement().(postorderTraversalStackItem)
-		}
-		if !topItem.visitedRight && crtNode.Left != nil {
-			crtNode = crtNode.Left
-			continue
-		}
-
-		if !topItem.visitedRight && crtNode.Right != nil {
-			topItem.visitedRight = true
-			crtNode = crtNode.Right
-			continue
-		}
-		topItem.visitedRight = true
-		output = append(output, crtNode.Val)
-		_ = stack.Pop()
-		topItem, ok = stack.TopElement().(postorderTraversalStackItem)
-		if ok {
-			crtNode = topItem.node
+	for {
+		topElem, _ := stack.TopElement()
+		stackItem, _ := topElem.(*postorderTraversalStackItem)
+		if crtNode == nil {
+			// set crtNode to the node in the top element of the stack.
+			// because stack.Len() > 0, the error could be overlooked.
+			crtNode = stackItem.node
 		} else {
-			crtNode = nil
+			// push crtNode to the stack if the node in the top element of the stack isn't equals to crtNode.
+			if stackItem.node != crtNode {
+				stack.Push(&postorderTraversalStackItem{node: crtNode, visitedRight: false})
+				crtNode = crtNode.Left
+			} else {
+				// if right branch is not visited, visit it right now!
+				if !stackItem.visitedRight {
+					stackItem.visitedRight = true
+					crtNode = crtNode.Right
+				} else {
+					output = append(output, crtNode.Val)
+					_, _ = stack.Pop()
+					if stack.Len() == 0 {
+						break
+					}
+					topElem, _ := stack.TopElement()
+					stackItem, _ = topElem.(*postorderTraversalStackItem)
+					crtNode = stackItem.node
+				}
+			}
 		}
 	}
 	return output
