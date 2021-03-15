@@ -11,7 +11,7 @@ func TestStack(t *testing.T) {
 			t.Logf("value: %d", intV)
 		}
 	}
-	val := stack.Pop()
+	val, _ := stack.Pop()
 	if intV, ok := val.(int); ok {
 		t.Logf("popped item is %d", intV)
 	}

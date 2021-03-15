@@ -45,3 +45,7 @@ func (queue *Queue) Len() int {
 	}
 	return tail - head
 }
+
+func (queue *Queue) Tail() interface{} {
+	return queue.arr[(queue.tail - 1 + len(queue.arr)) % len(queue.arr)]
+}

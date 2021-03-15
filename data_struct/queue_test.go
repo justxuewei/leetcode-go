@@ -39,6 +39,7 @@ func TestQueue(t *testing.T) {
 	second, _ := queue.Dequeue()
 	secondInt, _ := second.(int)
 	t.Logf("second: %d", secondInt)
+	t.Logf("Tail Element: %d\n", queue.Tail().(int))
 	printQueueInt(queue)
 	t.Log(queue.Len())
 	_ = queue.Enqueue(4)
