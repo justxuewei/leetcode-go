@@ -5,6 +5,8 @@ import (
 )
 
 // My Solution: BFS
+// Runtime: 0 ms
+// Memory Usage: 2.8 MB
 func levelOrder(root *TreeNode) [][]int {
 	if root == nil { return nil}
 
