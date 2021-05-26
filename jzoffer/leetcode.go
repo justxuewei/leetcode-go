@@ -1,12 +1,10 @@
 package jzoffer
 
+import btree "github.com/xavier-niu/leetcode/binary_tree"
+
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+type TreeNode = btree.TreeNode
