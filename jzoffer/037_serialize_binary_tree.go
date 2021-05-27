@@ -25,20 +25,20 @@ func (c *BTreeCodec) serialize(root *TreeNode) string {
 	for len(queue) > 0 && l != nil {
 		node = queue[0]
 		queue = queue[1:]
-		// replace last tree node
-		if node == l {
-			if node.Right != nil {
-				l = node.Right
-			} else {
-				l = node.Left
-			}
-		}
 		if node != nil {
 			queue = append(queue, node.Left, node.Right)
 			_, _ = fmt.Fprintf(&b, "%d,", node.Val)
 		} else {
-			queue = append(queue, nil, nil)
 			_, _ = fmt.Fprintf(&b, "n,")
+		}
+		// replace last tree node
+		if node == l {
+			for i:=len(queue)-1; i>=0; i-- {
+				l = queue[i]
+				if queue[i] != nil {
+					break
+				}
+			}
 		}
 	}
 	return b.String()[:b.Len()-1]
