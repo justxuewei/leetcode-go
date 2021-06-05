@@ -4,21 +4,37 @@ func reversePairs(nums []int) int {
 	if len(nums) < 2 {
 		return 0
 	}
-	lpairs := reversePairs(nums[:len(nums)/2])
-	rpairs := reversePairs(nums[len(nums)/2:])
-	// find pairs for nums
+	tmp := make([]int, len(nums))
+	return mergeSort(nums, tmp, 0, len(nums)-1)
+}
+
+func mergeSort(nums []int, tmp []int, begin, end int) int {
+	if end-begin+1 < 2 {
+		return 0
+	}
+	mid := (begin+end) / 2
+	lpairs := mergeSort(nums, tmp, begin, mid)
+	rpairs := mergeSort(nums, tmp, mid+1, end)
+	// build tmp nums
+	for i:=begin; i<=end; i++ {
+		tmp[i] = nums[i]
+	}
+	// find reverse pairs and merge
 	var pairs int
-	tmpidx := len(nums)/2
-	for i:=0; i<len(nums)/2; i++ {
-		for ; tmpidx < len(nums); tmpidx++ {
-			if nums[i] > nums[tmpidx] {
-				pairs += len(nums) - tmpidx
-				break
-			}
+	i, j := begin, mid+1
+	for k:=begin; k<=end; k++ {
+		if i == mid + 1 { // i reaches the end -> do not count pairs
+			nums[k] = tmp[j]
+			j++
+		} else if j == end + 1 || tmp[i] <= tmp[j] { // j reaches the end or tmp[i] less than tmp[j] -> do not count pairs
+			nums[k] = tmp[i]
+			i++
+		} else {
+			nums[k] = tmp[j]
+			j++
+			pairs += mid - i + 1
 		}
 	}
-	// merge
-	
 
-	return lpairs + rpairs + pairs
+	return pairs + lpairs + rpairs
 }
