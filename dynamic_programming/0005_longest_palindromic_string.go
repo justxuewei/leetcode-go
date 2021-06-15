@@ -1,33 +1,23 @@
 package dynamic_programming
 
 func longestPalindrome(s string) string {
-	maxidx := 0
-	dp := make([]int, len(s))
-	dp[0] = 1
+	ml, mr := 0, 0
 
-	var j int
-	for i:=1; i<len(s); i++ {
-		if i - dp[i-1] - 1 >= 0 && s[i] == s[i-dp[i-1]-1] {
-			dp[i] = max(dp[i], dp[i-1] + 2)
-		}
-		j = i - 1
-		for  j>=0 && s[i] == s[j] {
-			j--
-		}
-		dp[i] = max(dp[i], i - j)
-		if i-2 >= 0 && s[i-2] == s[i] {
-			dp[i] = max(dp[i], 3)
-		}
-		if dp[i] > dp[maxidx] {
-			maxidx = i
+	dp := make([][]bool, len(s))
+	for i := range dp {
+		dp[i] = make([]bool, len(s))
+	}
+
+	for r:=1; r<len(s); r++ {
+		for l:=0; l<r; l++ {
+			if s[l]==s[r] && (r-l<=2 || dp[l+1][r-1]) {
+				dp[l][r] = true
+				if r-l > mr-ml {
+					ml, mr = l, r
+				}
+			}
 		}
 	}
-	return s[maxidx-dp[maxidx]+1:maxidx+1]
-}
 
-func max(lhs, rhs int) int {
-	if lhs > rhs {
-		return lhs
-	}
-	return rhs
+	return s[ml:mr+1]
 }
