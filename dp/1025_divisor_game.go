@@ -1,4 +1,4 @@
-package dynamic_programming
+package dp
 
 func divisorGame(n int) bool {
 	dp := make([]bool, n+1)

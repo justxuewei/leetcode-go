@@ -1,4 +1,4 @@
-package linked_list
+package lnklist
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	if head == nil || n == 0 { return head }

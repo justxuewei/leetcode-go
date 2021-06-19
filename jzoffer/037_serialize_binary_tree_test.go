@@ -2,7 +2,7 @@ package jzoffer
 
 import (
 	"github.com/stretchr/testify/assert"
-	btree "github.com/xavier-niu/leetcode/binary_tree"
+	btree "github.com/xavier-niu/leetcode/btree"
 	"testing"
 )
 

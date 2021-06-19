@@ -1,4 +1,4 @@
-package dynamic_programming
+package dp
 
 func countBits(n int) []int {
 	ret := make([]int, n+1)

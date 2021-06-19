@@ -1,6 +1,6 @@
 package bytedance
 
-import btree "github.com/xavier-niu/leetcode/binary_tree"
+import btree "github.com/xavier-niu/leetcode/btree"
 
 func partSumBytedance(node *btree.TreeNode, targetSum int) int {
 	npath := 0

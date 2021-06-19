@@ -1,7 +1,7 @@
 package btree
 
 import (
-	ds "github.com/xavier-niu/leetcode/data_struct"
+	ds "github.com/xavier-niu/leetcode/ds"
 )
 
 func InorderTraversalRecursively(root *TreeNode) []int {

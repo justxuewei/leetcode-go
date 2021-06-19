@@ -2,7 +2,7 @@ package btree
 
 import (
 	"errors"
-	ds "github.com/xavier-niu/leetcode/data_struct"
+	ds "github.com/xavier-niu/leetcode/ds"
 	"log"
 )
 

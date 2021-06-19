@@ -1,4 +1,4 @@
-package dynamic_programming
+package dp
 
 func maxSubArray(nums []int) int {
 	if len(nums) == 1 {

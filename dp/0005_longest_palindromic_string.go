@@ -1,4 +1,4 @@
-package dynamic_programming
+package dp
 
 func longestPalindrome(s string) string {
 	ml, mr := 0, 0

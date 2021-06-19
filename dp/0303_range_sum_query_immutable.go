@@ -1,4 +1,4 @@
-package dynamic_programming
+package dp
 
 type NumArray struct {
 	data []int

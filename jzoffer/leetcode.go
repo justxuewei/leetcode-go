@@ -1,6 +1,6 @@
 package jzoffer
 
-import btree "github.com/xavier-niu/leetcode/binary_tree"
+import btree "github.com/xavier-niu/leetcode/btree"
 
 type ListNode struct {
 	Val  int

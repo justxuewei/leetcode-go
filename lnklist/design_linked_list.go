@@ -1,4 +1,4 @@
-package linked_list
+package lnklist
 
 type MyLinkedList struct {
 	head *ListNode

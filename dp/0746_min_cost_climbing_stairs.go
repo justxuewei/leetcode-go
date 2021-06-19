@@ -1,4 +1,4 @@
-package dynamic_programming
+package dp
 
 func minCostClimbingStairs(cost []int) int {
 	if len(cost) > 2 {

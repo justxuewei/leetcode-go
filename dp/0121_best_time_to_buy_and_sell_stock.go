@@ -1,4 +1,4 @@
-package dynamic_programming
+package dp
 
 func maxProfit(prices []int) int {
 	if len(prices) == 1 {

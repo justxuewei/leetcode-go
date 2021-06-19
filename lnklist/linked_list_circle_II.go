@@ -1,4 +1,4 @@
-package linked_list
+package lnklist
 
 func detectCycle(head *ListNode) *ListNode {
 	if isCircle, p1 := hasCircle1(head); isCircle {

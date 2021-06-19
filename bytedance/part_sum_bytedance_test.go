@@ -1,7 +1,7 @@
 package bytedance
 
 import (
-	btree "github.com/xavier-niu/leetcode/binary_tree"
+	btree "github.com/xavier-niu/leetcode/btree"
 	"testing"
 )
 
