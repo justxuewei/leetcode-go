@@ -12,6 +12,7 @@ func numDecodings(s string) int {
 	}
 
 	dp0, dp1 := 1, 1
+	var dpnow int
 	for i:=1; i<len(s); i++ {
 		cur, _ := strconv.Atoi(s[i:i+1])
 		prev, _ := strconv.Atoi(s[i-1:i+1])
@@ -19,18 +20,18 @@ func numDecodings(s string) int {
 		if cur == 0 {
 			if prev > 0 && prev <= 26 {
 				// reset
-				dp0, dp1 = 0, 1
+				dp0, dp1 = 0, dp0
 				continue
 			} else {
 				return 0
 			}
 		}
 
-		var dpnow int
+		dpnow = 0
 		if cur > 0 {
 			dpnow += dp1
 		}
-		if prev > 0 && prev < 27 {
+		if prev > 0 && prev <= 26 {
 			dpnow += dp0
 		}
 		dp0, dp1 = dp1, dpnow
