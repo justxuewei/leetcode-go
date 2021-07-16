@@ -3,6 +3,6 @@ package dp
 import "testing"
 
 func TestIsInterleave(t *testing.T) {
-	case1 := isInterleave("aabcc", "dbbca", "aadbbcbcac")
-	t.Log(case1)
+	t.Log(isInterleave("aabcc", "dbbca", "aadbbcbcac"))
+	t.Log(isInterleave("", "", "a"))
 }
