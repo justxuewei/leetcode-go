@@ -5,16 +5,27 @@ func findNumberIn2DArray(matrix [][]int, target int) bool {
 		return false
 	}
 
-	var i, j int
-	for ; i<len(matrix); i++ {
-		if matrix[i][len(matrix[0])-1] >= target {
-			break
-		}
-	}
+	var (
+		right = len(matrix[0])-1
+	)
 
-	for i < len(matrix) {
-		
-		i++
+	for i:=0 ; i<len(matrix); i++ {
+		if matrix[i][right] < target {
+			continue
+		} else if matrix[i][right] == target {
+			return true
+		} else {
+			for right >= 0 && matrix[i][right] > target {
+				right--
+			}
+
+			if right < 0 {
+				return false
+			}
+			if matrix[i][right] == target {
+				return true
+			}
+		}
 	}
 
 	return false
