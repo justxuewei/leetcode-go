@@ -2,7 +2,7 @@ package jzoffer1
 
 func isMatch(s string, p string) bool {
 	if len(p) == 0 {
-		return false
+		return len(s) == 0
 	}
 	dp := make([][]bool, len(s)+1)
 	for i := range dp {
@@ -14,15 +14,22 @@ func isMatch(s string, p string) bool {
 		if !dp[0][i-2] {
 			break
 		}
-		dp[0][i] = p[i] == '*'
+		dp[0][i] = p[i-1] == '*'
 	}
 
 	for i:=1; i<=len(s); i++ {
-		dp[i][0] = true
 		for j:=1; j<=len(p); j++ {
-			
+			if p[j-1] == '*' {
+				if dp[i][j-2] || dp[i-1][j] && (s[i-1] == p[j-2] || p[j-2] == '.') {
+					dp[i][j] = true
+				}
+			} else {
+				if dp[i-1][j-1] && (s[i-1] == p[j-1] || p[j-1] == '.') {
+					dp[i][j] = true
+				}
+			}
 		}
 	}
 
-	return dp[len(p)][len(s)]
+	return dp[len(s)][len(p)]
 }
