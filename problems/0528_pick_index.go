@@ -1,31 +1,25 @@
 package problems
 
-import "time"
+import (
+	"math/rand"
+	"sort"
+)
 
 type WeightedPicker struct {
 	weights []int
-	length  int
-	factor  int
 }
 
 func NewWeightedPicker(w []int) WeightedPicker {
-	var length int
-	for _, v := range w {
-		length += v
+	for i:=1; i<len(w); i++ {
+		w[i] += w[i-1]
 	}
 	return WeightedPicker{
 		weights: w,
-		length:  length,
-		factor:  3,
 	}
 }
 
 func (p *WeightedPicker) PickIndex() int {
-	rand := int(int64(p.factor) * time.Now().Unix() % int64(p.length))
-	for i, v := range p.weights {
-		if rand = rand - v; rand < 0 {
-			return i
-		}
-	}
-	return 0
+	// generate numbers in [1, p.weights[len(p.weights)-1]]
+	index := rand.Intn(p.weights[len(p.weights)-1]) + 1
+	return sort.SearchInts(p.weights, index)
 }
