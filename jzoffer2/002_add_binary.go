@@ -1,46 +1,59 @@
 package jzoffer2
 
+import "strings"
+
 func addBinary(a, b string) string {
-	x, y := atoiInBinary(a), atoiInBinary(b)
+	a, b = stringCompletion(a, b)
 
-	temp1, temp2 := 0, 0
-
-	for y > 0 {
-		temp1 = x ^ y
-		temp2 = (x & y) << 1
-		x, y = temp1, temp2
-	}
-
-	return itoaInBinary(x)
-}
-
-func atoiInBinary(a string) (ret int) {
-	for i, char := range a {
-		if char == '1' {
-			ret |= 1 << (len(a) - i - 1)
-		}
-	}
-	return
-}
-
-func itoaInBinary(a int) string {
-	if a == 0 {
-		return "0"
-	}
-	ret := make([]byte, getShift(a))
-	for i := 0; a>>i != 0; i++ {
-		if a>>i&1 == 1 {
-			ret[len(ret)-i-1] = '1'
+	sb := strings.Builder{}
+	var carry, numa, numb int
+	for i := len(a) - 1; i >= 0; i-- {
+		if a[i] == '0' {
+			numa = 0
 		} else {
-			ret[len(ret)-i-1] = '0'
+			numa = 1
 		}
+		if b[i] == '0' {
+			numb = 0
+		} else {
+			numb = 1
+		}
+		if (numa+numb+carry)%2 == 0 {
+			sb.WriteByte('0')
+		} else {
+			sb.WriteByte('1')
+		}
+		carry = (numa + numb + carry) / 2
+	}
+
+	if carry == 1 {
+		sb.WriteByte('1')
+	}
+
+	return reverseString(sb.String())
+}
+
+func stringCompletion(a, b string) (string, string) {
+	if len(a) != len(b) {
+		if len(a) < len(b) {
+			a, b = b, a
+		}
+		newb := make([]byte, len(a))
+		for i := 0; i < len(a)-len(b); i++ {
+			newb[i] = '0'
+		}
+		for i := 0; i < len(b); i++ {
+			newb[len(a)-len(b)+i] = b[i]
+		}
+		b = string(newb)
+	}
+	return a, b
+}
+
+func reverseString(str string) string {
+	ret := make([]byte, len(str))
+	for i := 0; i < len(str); i++ {
+		ret[i] = str[len(str)-1-i]
 	}
 	return string(ret)
-}
-
-func getShift(a int) (shift int) {
-	for a>>shift != 0 {
-		shift++
-	}
-	return
 }

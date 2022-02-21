@@ -5,14 +5,20 @@ import (
 	"testing"
 )
 
-func TestAtoiInBinary(t *testing.T) {
-	assert.Equal(t, 2, atoiInBinary("10"))
-}
+func TestStringCompletion(t *testing.T) {
+	var a, b string
 
-func TestItoAInBinary(t *testing.T) {
-	assert.Equal(t, "10", itoaInBinary(2))
+	a, b = stringCompletion("11", "1")
+	assert.Equal(t, "11", a)
+	assert.Equal(t, "01", b)
+
+	a, b = stringCompletion("1", "11")
+	assert.Equal(t, "11", a)
+	assert.Equal(t, "01", b)
 }
 
 func TestAddBinary(t *testing.T) {
 	assert.Equal(t, "100", addBinary("11", "1"))
+	assert.Equal(t, "100", addBinary("1", "11"))
+	assert.Equal(t, "10101", addBinary("1010", "1011"))
 }
