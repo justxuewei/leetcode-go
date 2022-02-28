@@ -1,7 +1,10 @@
 package jzoffer2
 
-import "testing"
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
 
 func TestPermutationInString(t *testing.T) {
-	checkInclusion("ab", "aba")
+	assert.True(t, checkInclusion("ab", "eidbaooo"))
 }
