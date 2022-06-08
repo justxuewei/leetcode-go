@@ -1,7 +1,9 @@
 package jzoffer
 
 func validateStackSequences(pushed []int, popped []int) bool {
-	if len(pushed) == 0 { return true }
+	if len(pushed) == 0 {
+		return true
+	}
 	stack := make([]int, 0, len(pushed))
 	a, b := 0, 0
 	for a < len(pushed) {

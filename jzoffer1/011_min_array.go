@@ -8,7 +8,7 @@ func minArray(numbers []int) int {
 	}
 
 	prev := numbers[0]
-	for i:=0; i<len(numbers); i++ {
+	for i := 0; i < len(numbers); i++ {
 		if prev > numbers[i] {
 			return numbers[i]
 		}

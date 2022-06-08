@@ -23,7 +23,7 @@ func maxSubArray(nums []int) int {
 
 // dynamic programming
 func maxSubArray1(nums []int) int {
-	for i:=1; i<len(nums); i++ {
+	for i := 1; i < len(nums); i++ {
 		if nums[i-1] > 0 {
 			nums[i] = nums[i-1] + nums[i]
 		}
@@ -41,15 +41,19 @@ func maxSubArray1(nums []int) int {
 
 // divide and conquer
 func maxSubArray2(nums []int) int {
-	if len(nums) == 0 { return math.MinInt32 }
-	if len(nums) == 1 { return nums[0] }
+	if len(nums) == 0 {
+		return math.MinInt32
+	}
+	if len(nums) == 1 {
+		return nums[0]
+	}
 
-	mid := (len(nums)-1)/2
+	mid := (len(nums) - 1) / 2
 	// calculate maximum value of left subarray
 	maxLeft, maxRight := 0, 0
-	tmp :=  0
+	tmp := 0
 	if mid > 0 {
-		for i:=mid-1; i>=0; i-- {
+		for i := mid - 1; i >= 0; i-- {
 			tmp += nums[i]
 			if tmp > maxLeft {
 				maxLeft = tmp
@@ -59,7 +63,7 @@ func maxSubArray2(nums []int) int {
 	tmp = 0
 
 	if mid < len(nums)-1 {
-		for i:=mid+1; i<len(nums); i++ {
+		for i := mid + 1; i < len(nums); i++ {
 			tmp += nums[i]
 			if tmp > maxRight {
 				maxRight = tmp

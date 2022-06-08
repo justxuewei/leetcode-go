@@ -1,7 +1,9 @@
 package jzoffer
 
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
-	if headA == nil || headB == nil { return nil }
+	if headA == nil || headB == nil {
+		return nil
+	}
 
 	pA, pB := headA, headB
 
@@ -38,7 +40,9 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 }
 
 func getIntersectionNode1(headA, headB *ListNode) *ListNode {
-	if headA == nil || headB == nil { return nil }
+	if headA == nil || headB == nil {
+		return nil
+	}
 
 	pA, pB := headA, headB
 	for pA != pB {

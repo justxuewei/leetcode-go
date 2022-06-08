@@ -7,8 +7,8 @@ func duplicateZeros(arr []int) {
 
 	removeLastElement := false
 	for i, v := range arr {
-		if i >= right - numOfZeros {
-			if right - i < numOfZeros {
+		if i >= right-numOfZeros {
+			if right-i < numOfZeros {
 				removeLastElement = true
 			}
 			break
@@ -28,7 +28,7 @@ func duplicateZeros(arr []int) {
 		i--
 	}
 
-	for ; i>0; i-- {
+	for ; i > 0; i-- {
 		if arr[i-numOfZeros] == 0 {
 			arr[i] = 0
 			arr[i-1] = 0

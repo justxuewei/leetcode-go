@@ -4,7 +4,7 @@ import "fmt"
 
 func pathSum(root *TreeNode, target int) [][]int {
 	var (
-		ret [][]int
+		ret  [][]int
 		path []int
 	)
 	pathSumBacktrace(root, 0, target, path, &ret)

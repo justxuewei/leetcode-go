@@ -1,6 +1,6 @@
 package jzoffer
 
-var fsa = []map[byte]int {
+var fsa = []map[byte]int{
 	{' ': 0, 's': 1, 'd': 2, '.': 4},
 	{'d': 2, '.': 4},
 	{'d': 2, '.': 3, 'e': 5, ' ': 8},

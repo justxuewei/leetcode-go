@@ -1,7 +1,9 @@
 package bytedance
 
 func sortList(head *ListNode) *ListNode {
-	if head == nil || head.Next == nil { return head }
+	if head == nil || head.Next == nil {
+		return head
+	}
 	middleNode := middleNode(head)
 	right := sortList(middleNode.Next)
 	middleNode.Next = nil
@@ -46,7 +48,7 @@ func mergeLists(a *ListNode, b *ListNode) *ListNode {
 	return head.Next
 }
 
-//func sortList(head *ListNode) *ListNode {
+// func sortList(head *ListNode) *ListNode {
 //	if head == nil { return nil }
 //	nsort := 2
 //	n := 0
@@ -105,9 +107,9 @@ func mergeLists(a *ListNode, b *ListNode) *ListNode {
 //	}
 //
 //	return retHead
-//}
+// }
 //
-//func combineList(h1 *ListNode, h2 *ListNode) (head *ListNode, last *ListNode) {
+// func combineList(h1 *ListNode, h2 *ListNode) (head *ListNode, last *ListNode) {
 //	var pret *ListNode
 //	p1, p2 := h1, h2
 //
@@ -161,4 +163,4 @@ func mergeLists(a *ListNode, b *ListNode) *ListNode {
 //	last = pret
 //
 //	return head, last
-//}
+// }

@@ -17,7 +17,9 @@ func (queue *CQueue) AppendTail(value int) {
 }
 
 func (queue *CQueue) DeleteHead() int {
-	if len(queue.AppendStack) == 0 && len(queue.DeleteStack) == 0 { return -1 }
+	if len(queue.AppendStack) == 0 && len(queue.DeleteStack) == 0 {
+		return -1
+	}
 	if len(queue.DeleteStack) == 0 {
 		for len(queue.AppendStack) != 0 {
 			queue.DeleteStack = append(queue.DeleteStack, queue.AppendStack[len(queue.AppendStack)-1])

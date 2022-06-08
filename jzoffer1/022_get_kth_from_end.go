@@ -2,7 +2,7 @@ package jzoffer1
 
 func getKthFromEnd(head *ListNode, k int) *ListNode {
 	fast := head
-	for ; k>1 && fast!=nil; k-- {
+	for ; k > 1 && fast != nil; k-- {
 		fast = fast.Next
 	}
 	if k != 1 {

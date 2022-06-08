@@ -9,16 +9,16 @@ func printQueueInt(queue *Queue) {
 	if queue.head == queue.tail {
 		fmt.Print("Empty Queue")
 	} else if queue.head < queue.tail {
-		for i:=queue.head; i<queue.tail; i++ {
+		for i := queue.head; i < queue.tail; i++ {
 			intV, _ := queue.arr[i].(int)
 			fmt.Printf("%d\t", intV)
 		}
 	} else {
-		for i:=queue.head; i<len(queue.arr); i++ {
+		for i := queue.head; i < len(queue.arr); i++ {
 			intV, _ := queue.arr[i].(int)
 			fmt.Printf("%d\t", intV)
 		}
-		for i:=0; i<queue.tail; i++ {
+		for i := 0; i < queue.tail; i++ {
 			intV, _ := queue.arr[i].(int)
 			fmt.Printf("%d\t", intV)
 		}

@@ -10,12 +10,12 @@ func constructArr(a []int) []int {
 		b[i] = 1
 	}
 	// lower triangle
-	for i:=1; i<len(b); i++ {
+	for i := 1; i < len(b); i++ {
 		b[i] = a[i-1] * b[i-1]
 	}
 	// upper triangle
 	tmp := 1
-	for i:=len(b)-2; i>=0; i-- {
+	for i := len(b) - 2; i >= 0; i-- {
 		tmp *= a[i+1]
 		b[i] *= tmp
 	}

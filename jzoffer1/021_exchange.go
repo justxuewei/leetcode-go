@@ -3,11 +3,11 @@ package jzoffer1
 func exchange(nums []int) []int {
 	i, j := 0, len(nums)-1
 	for i < j {
-		if nums[i] % 2 != 0 {
+		if nums[i]%2 != 0 {
 			i++
 			continue
 		}
-		if nums[j] % 2 == 0 {
+		if nums[j]%2 == 0 {
 			j--
 			continue
 		}

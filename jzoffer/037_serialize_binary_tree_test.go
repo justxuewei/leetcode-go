@@ -1,9 +1,11 @@
 package jzoffer
 
 import (
-	"github.com/stretchr/testify/assert"
-	btree "github.com/xavier-niu/leetcode/btree"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+
+	btree "github.com/xavier-niu/leetcode/btree"
 )
 
 type bTreeCodecTestSuite struct {

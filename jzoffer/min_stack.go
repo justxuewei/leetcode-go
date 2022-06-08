@@ -5,13 +5,11 @@ type MinStack struct {
 	DStack []int // descending stack
 }
 
-
 func ConstructorMinStack() MinStack {
 	return MinStack{RStack: make([]int, 0), DStack: make([]int, 0)}
 }
 
-
-func (m *MinStack) Push(val int)  {
+func (m *MinStack) Push(val int) {
 	m.RStack = append(m.RStack, val)
 
 	if len(m.DStack) == 0 {
@@ -24,8 +22,7 @@ func (m *MinStack) Push(val int)  {
 	}
 }
 
-
-func (m *MinStack) Pop()  {
+func (m *MinStack) Pop() {
 	rtop := m.RStack[len(m.RStack)-1]
 	m.RStack = m.RStack[:len(m.RStack)-1]
 	dtop := m.DStack[len(m.DStack)-1]
@@ -34,11 +31,9 @@ func (m *MinStack) Pop()  {
 	}
 }
 
-
 func (m *MinStack) Top() int {
 	return m.RStack[len(m.RStack)-1]
 }
-
 
 func (m *MinStack) GetMin() int {
 	return m.DStack[len(m.DStack)-1]

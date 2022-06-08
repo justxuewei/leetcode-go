@@ -14,7 +14,7 @@ func validateStackSequences(pushed []int, popped []int) bool {
 			mockStack = append(mockStack, pushed[0])
 			pushed = pushed[1:]
 		} else {
-			mockStack = mockStack[0:len(mockStack)-1]
+			mockStack = mockStack[0 : len(mockStack)-1]
 			popped = popped[1:]
 		}
 	}

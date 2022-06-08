@@ -6,14 +6,16 @@ import (
 	"strings"
 )
 
-type BTreeCodec struct {}
+type BTreeCodec struct{}
 
 func NewBTreeCodec() BTreeCodec {
 	return BTreeCodec{}
 }
 
 func (c *BTreeCodec) serialize(root *TreeNode) string {
-	if root == nil { return "" }
+	if root == nil {
+		return ""
+	}
 	var b strings.Builder
 	// queue init
 	var queue []*TreeNode
@@ -33,7 +35,7 @@ func (c *BTreeCodec) serialize(root *TreeNode) string {
 		}
 		// replace last tree node
 		if node == l {
-			for i:=len(queue)-1; i>=0; i-- {
+			for i := len(queue) - 1; i >= 0; i-- {
 				l = queue[i]
 				if queue[i] != nil {
 					break
@@ -45,20 +47,22 @@ func (c *BTreeCodec) serialize(root *TreeNode) string {
 }
 
 func (c *BTreeCodec) deserialize(data string) *TreeNode {
-	if data == "" { return nil }
+	if data == "" {
+		return nil
+	}
 	datarr := strings.Split(data, ",")
 	var queue []*TreeNode
 	root := aToN(datarr[0])
 	queue = append(queue, root)
 	var node *TreeNode
-	for i:=1; i<len(datarr); i+=2 {
+	for i := 1; i < len(datarr); i += 2 {
 		node = queue[0]
 		queue = queue[1:]
 		if leftNode := aToN(datarr[i]); leftNode != nil {
 			node.Left = leftNode
 			queue = append(queue, leftNode)
 		}
-		if i + 1 < len(datarr) {
+		if i+1 < len(datarr) {
 			if rightNode := aToN(datarr[i+1]); rightNode != nil {
 				node.Right = rightNode
 				queue = append(queue, rightNode)

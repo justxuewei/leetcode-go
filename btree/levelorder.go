@@ -8,7 +8,9 @@ import (
 // Runtime: 0 ms
 // Memory Usage: 2.8 MB
 func levelOrder(root *TreeNode) [][]int {
-	if root == nil { return nil}
+	if root == nil {
+		return nil
+	}
 
 	var output [][]int
 
@@ -32,7 +34,9 @@ func levelOrder(root *TreeNode) [][]int {
 			_ = queue.Enqueue(headElem.Right)
 		}
 
-		if queue.Len() == 0 { break }
+		if queue.Len() == 0 {
+			break
+		}
 		if levelEndNode == headElem {
 			level++
 			levelEndNode = queue.Tail().(*TreeNode)

@@ -8,9 +8,9 @@ func longestPalindrome(s string) string {
 		dp[i] = make([]bool, len(s))
 	}
 
-	for r:=1; r<len(s); r++ {
-		for l:=0; l<r; l++ {
-			if s[l]==s[r] && (r-l<=2 || dp[l+1][r-1]) {
+	for r := 1; r < len(s); r++ {
+		for l := 0; l < r; l++ {
+			if s[l] == s[r] && (r-l <= 2 || dp[l+1][r-1]) {
 				dp[l][r] = true
 				if r-l > mr-ml {
 					ml, mr = l, r
@@ -19,5 +19,5 @@ func longestPalindrome(s string) string {
 		}
 	}
 
-	return s[ml:mr+1]
+	return s[ml : mr+1]
 }

@@ -11,9 +11,9 @@ func generateTrees(n int) []*TreeNode {
 	// dp[1]
 	dp = append(dp, []*TreeNode{{Val: 1}})
 
-	for i:=2; i<=n; i++ {
+	for i := 2; i <= n; i++ {
 		dp = append(dp, []*TreeNode{})
-		for j:=1; j<=i; j++ {
+		for j := 1; j <= i; j++ {
 			var leftTrees, rightTrees []*TreeNode
 			leftTrees = dp[j-1]
 			for t := range dp[i-j] {
@@ -44,7 +44,7 @@ func bfsAddOffset(root *TreeNode, offset int) *TreeNode {
 	if root.Val == 0 {
 		return root
 	}
-	node := &TreeNode{Val: root.Val+offset}
+	node := &TreeNode{Val: root.Val + offset}
 	node.Left = bfsAddOffset(root.Left, offset)
 	node.Right = bfsAddOffset(root.Right, offset)
 	return node

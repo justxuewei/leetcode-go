@@ -7,8 +7,8 @@ type NumArray struct {
 func NewNumArray(nums []int) NumArray {
 	data := make([]int, 0, len(nums))
 	data = append(data, nums[0])
-	for i:=1; i<len(nums); i++ {
-		data = append(data, data[i-1] + nums[i])
+	for i := 1; i < len(nums); i++ {
+		data = append(data, data[i-1]+nums[i])
 	}
 	return NumArray{data: data}
 }

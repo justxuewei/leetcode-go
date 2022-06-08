@@ -12,7 +12,9 @@ func detectCycle(head *ListNode) *ListNode {
 }
 
 func hasCircle1(head *ListNode) (bool, *ListNode) {
-	if head == nil || head.Next == nil { return false, nil }
+	if head == nil || head.Next == nil {
+		return false, nil
+	}
 	fast, slow := head, head
 	for fast.Next != nil && fast.Next.Next != nil {
 		slow, fast = slow.Next, fast.Next.Next

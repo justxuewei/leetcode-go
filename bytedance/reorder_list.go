@@ -3,7 +3,7 @@ package bytedance
 import "math"
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
@@ -14,12 +14,14 @@ func reorderList(head *ListNode) {
 		p = p.Next
 	}
 
-	if n < 3 { return }
+	if n < 3 {
+		return
+	}
 
 	half, counter, p := int(math.Ceil(float64(n)/2.0)), 0, head
 	var halfHead *ListNode
 	for p != nil {
-		if counter == half - 1 {
+		if counter == half-1 {
 			halfHead = p.Next
 			p.Next = nil
 			break

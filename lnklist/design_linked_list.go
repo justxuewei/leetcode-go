@@ -1,7 +1,7 @@
 package lnklist
 
 type MyLinkedList struct {
-	head *ListNode
+	head   *ListNode
 	length int
 }
 
@@ -10,7 +10,9 @@ func Constructor() MyLinkedList {
 }
 
 func (list *MyLinkedList) Get(index int) int {
-	if index < 0 || index >= list.length { return -1 }
+	if index < 0 || index >= list.length {
+		return -1
+	}
 	counter := 0
 	p := list.head
 	for counter != index {
@@ -45,8 +47,10 @@ func (list *MyLinkedList) AddAtTail(val int) {
 	list.length++
 }
 
-func (list *MyLinkedList) AddAtIndex(index int, val int)  {
-	if index < 0 || index > list.length { return }
+func (list *MyLinkedList) AddAtIndex(index int, val int) {
+	if index < 0 || index > list.length {
+		return
+	}
 
 	if list.length == 0 {
 		list.head = &ListNode{Val: val}
@@ -56,7 +60,7 @@ func (list *MyLinkedList) AddAtIndex(index int, val int)  {
 		} else {
 			p := list.head
 			counter := 0
-			for index - 1 > counter {
+			for index-1 > counter {
 				p = p.Next
 				counter++
 			}
@@ -68,12 +72,14 @@ func (list *MyLinkedList) AddAtIndex(index int, val int)  {
 	list.length++
 }
 
-func (list *MyLinkedList) DeleteAtIndex(index int)  {
-	if index < 0 || index >= list.length { return }
+func (list *MyLinkedList) DeleteAtIndex(index int) {
+	if index < 0 || index >= list.length {
+		return
+	}
 
 	if list.length == 1 {
 		list.head = nil
-	} else if list.length == index + 1 {
+	} else if list.length == index+1 {
 		p := list.head
 		for p.Next.Next != nil {
 			p = p.Next
@@ -85,7 +91,7 @@ func (list *MyLinkedList) DeleteAtIndex(index int)  {
 		} else {
 			p := list.head
 			counter := 0
-			for index - 1 > counter {
+			for index-1 > counter {
 				p = p.Next
 				counter++
 			}
@@ -95,4 +101,3 @@ func (list *MyLinkedList) DeleteAtIndex(index int)  {
 
 	list.length--
 }
-

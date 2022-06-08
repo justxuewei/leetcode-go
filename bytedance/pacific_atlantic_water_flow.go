@@ -4,24 +4,26 @@ import "math"
 
 func pacificAtlantic(heights [][]int) [][]int {
 	nRow, nCol := len(heights), len(heights[0])
-	if nRow == 0 || nCol == 0 { return nil }
+	if nRow == 0 || nCol == 0 {
+		return nil
+	}
 	pacific := make([][]bool, nRow)
 	atlantic := make([][]bool, nRow)
-	for i:=0; i<nRow; i++ {
+	for i := 0; i < nRow; i++ {
 		pacific[i] = make([]bool, nCol)
 		atlantic[i] = make([]bool, nCol)
 	}
-	for i:=0; i<nRow; i++ {
+	for i := 0; i < nRow; i++ {
 		dfsFlow(heights, pacific, i, 0, math.MinInt32)
 		dfsFlow(heights, atlantic, i, nCol-1, math.MinInt32)
 	}
-	for j:=0; j<nCol; j++ {
+	for j := 0; j < nCol; j++ {
 		dfsFlow(heights, pacific, 0, j, math.MinInt32)
 		dfsFlow(heights, atlantic, nRow-1, j, math.MinInt32)
 	}
 	var ret [][]int
-	for i:=0; i<nRow; i++ {
-		for j:=0; j<nCol; j++ {
+	for i := 0; i < nRow; i++ {
+		for j := 0; j < nCol; j++ {
 			if pacific[i][j] && atlantic[i][j] {
 				ret = append(ret, []int{i, j})
 			}
@@ -45,7 +47,7 @@ func dfsFlow(heights [][]int, visited [][]bool, row, col int, lastHeight int) {
 	dfsFlow(heights, visited, row, col-1, heights[row][col])
 }
 
-//func pacificAtlantic(heights [][]int) [][]int {
+// func pacificAtlantic(heights [][]int) [][]int {
 //	pacific := make([][]int, len(heights))
 //	atlantic := make([][]int, len(heights))
 //	// init
@@ -89,9 +91,9 @@ func dfsFlow(heights [][]int, visited [][]bool, row, col int, lastHeight int) {
 //		}
 //	}
 //	return ret
-//}
+// }
 //
-//func dfsFlow(heights [][]int, cache [][]int, r int, c int, lastHeight int) bool {
+// func dfsFlow(heights [][]int, cache [][]int, r int, c int, lastHeight int) bool {
 //	if r < 0 || c < 0 || r >= len(heights) || c >= len(heights) { return false }
 //	currentHeight := heights[r][c]
 //	if lastHeight <= currentHeight {
@@ -109,4 +111,4 @@ func dfsFlow(heights [][]int, visited [][]bool, row, col int, lastHeight int) {
 //		panic("the range of cache element is expected from -1 to 1.")
 //	}
 //	return false
-//}
+// }

@@ -6,9 +6,9 @@ func maxProfit(prices []int) int {
 	}
 	buyday := 0
 	ret := 0
-	for i:=1; i<len(prices); i++ {
+	for i := 1; i < len(prices); i++ {
 		profit := prices[i] - prices[buyday]
-		if  profit < 0  {
+		if profit < 0 {
 			buyday = i
 		} else if profit > ret {
 			ret = profit

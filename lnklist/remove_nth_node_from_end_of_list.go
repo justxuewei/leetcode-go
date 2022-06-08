@@ -1,7 +1,9 @@
 package lnklist
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	if head == nil || n == 0 { return head }
+	if head == nil || n == 0 {
+		return head
+	}
 
 	var p1 *ListNode
 	ret, p2, p3 := head, head, head
@@ -17,7 +19,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		p2, p3 = p2.Next, p3.Next
 	}
 
-	//goland:noinspection GoNilness
+	// goland:noinspection GoNilness
 	if p1 != nil {
 		p1.Next = p2.Next
 	} else {

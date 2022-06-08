@@ -1,7 +1,9 @@
 package jzoffer
 
 func reversePrint(head *ListNode) []int {
-	if head == nil { return nil }
+	if head == nil {
+		return nil
+	}
 	p1, p2 := head, head.Next
 	// reverse the linked list
 	head.Next = nil

@@ -6,7 +6,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 	var (
 		carry bool
-		sum int
+		sum   int
 	)
 	for l1 != nil || l2 != nil {
 		sum = 0

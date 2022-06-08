@@ -11,7 +11,7 @@ func sortedSquares(nums []int) []int {
 	return quickSort(arr)
 }
 
-//func quickSort(nums []int, b int, e int) {
+// func quickSort(nums []int, b int, e int) {
 //	if b > e { return }
 //
 //	pivot := nums[b]
@@ -44,11 +44,13 @@ func sortedSquares(nums []int) []int {
 //	nums[b] = tmp
 //	quickSort(nums, b, m-1)
 //	quickSort(nums, m+1, e)
-//}
+// }
 
 // refL: https://www.golangprograms.com/golang-program-for-implementation-of-quick-sort.html
 func quickSort(a []int) []int {
-	if len(a) < 2 { return a }
+	if len(a) < 2 {
+		return a
+	}
 
 	left, right := 0, len(a)-1
 
@@ -56,7 +58,7 @@ func quickSort(a []int) []int {
 
 	a[pivot], a[right] = a[right], a[pivot]
 
-	for i, _ := range a {
+	for i := range a {
 		if a[i] < a[right] {
 			a[left], a[i] = a[i], a[left]
 			left++

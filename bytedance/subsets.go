@@ -13,9 +13,9 @@ func subsetsRecursively(subNums []int, subset []int, ret *[][]int) {
 	}
 	// empty
 	subsetsRecursively([]int{}, subset, ret)
-	for i:=0; i<len(subNums); i++ {
+	for i := 0; i < len(subNums); i++ {
 		var newSubNums []int
-		if i + 1 < len(subNums) {
+		if i+1 < len(subNums) {
 			newSubNums = subNums[i+1:]
 		} else {
 			newSubNums = []int{}

@@ -1,7 +1,9 @@
 package jzoffer
 
 func firstUniqChar(s string) byte {
-	if len(s) == 0 { return ' ' }
+	if len(s) == 0 {
+		return ' '
+	}
 	bmap := make(map[byte]int, len(s))
 
 	for i := range s {

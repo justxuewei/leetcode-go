@@ -1,7 +1,9 @@
 package jzoffer
 
 func levelOrder1(root *TreeNode) [][]int {
-	if root == nil { return nil }
+	if root == nil {
+		return nil
+	}
 	var queue []*TreeNode
 	queue = append(queue, root)
 	ret := make([][]int, 0)
@@ -12,7 +14,7 @@ func levelOrder1(root *TreeNode) [][]int {
 
 	for len(queue) > 0 {
 		node := queue[0]
-		if len(ret) % 2 == 0 {
+		if len(ret)%2 == 0 {
 			levelret[len(levelret)-levelremaining] = node.Val
 		} else {
 			levelret[levelremaining-1] = node.Val

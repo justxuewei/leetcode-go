@@ -7,7 +7,7 @@ func checkInclusion(s1 string, s2 string) bool {
 
 	s1map := make(map[byte]int)
 
-	for i:=0; i<len(s1); i++ {
+	for i := 0; i < len(s1); i++ {
 		if _, ok := s1map[s1[i]]; !ok {
 			s1map[s1[i]] = 1
 		} else {

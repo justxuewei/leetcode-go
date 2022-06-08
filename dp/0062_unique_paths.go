@@ -18,13 +18,13 @@ func uniquePaths(m, n int) int {
 	row, col := 1, 1
 	for {
 		if row < m {
-			for i:=col; i<n; i++ {
+			for i := col; i < n; i++ {
 				dp[row][i] = dp[row-1][i] + dp[row][i-1]
 			}
 			row++
 		}
 		if col < n {
-			for i:=row; i<m; i++ {
+			for i := row; i < m; i++ {
 				dp[i][col] = dp[i-1][col] + dp[i][col-1]
 			}
 			col++

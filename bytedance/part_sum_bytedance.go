@@ -9,7 +9,9 @@ func partSumBytedance(node *btree.TreeNode, targetSum int) int {
 }
 
 func dfs(node *btree.TreeNode, targetSum, currentSum int, num *int) {
-	if node == nil { return }
+	if node == nil {
+		return
+	}
 	newSum := currentSum + node.Val
 	if node.Left == nil && node.Right == nil {
 		if targetSum == newSum {
@@ -22,7 +24,9 @@ func dfs(node *btree.TreeNode, targetSum, currentSum int, num *int) {
 }
 
 func dfs1(node *btree.TreeNode, targetSum, currentSum int) int {
-	if node == nil { return 0 }
+	if node == nil {
+		return 0
+	}
 	newSum := currentSum + node.Val
 	if node.Left == nil && node.Right == nil && targetSum == newSum {
 		return 1
@@ -32,4 +36,3 @@ func dfs1(node *btree.TreeNode, targetSum, currentSum int) int {
 	}
 	return dfs1(node.Left, targetSum, newSum) + dfs1(node.Right, targetSum, newSum)
 }
-

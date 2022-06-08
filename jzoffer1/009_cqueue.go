@@ -7,12 +7,12 @@ type CQueue struct {
 func NewCQueue() CQueue {
 	var in, out []int
 	return CQueue{
-		in: in,
+		in:  in,
 		out: out,
 	}
 }
 
-func (q *CQueue) AppendTail(value int)  {
+func (q *CQueue) AppendTail(value int) {
 	q.in = append(q.in, value)
 }
 

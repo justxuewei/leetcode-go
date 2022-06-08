@@ -8,8 +8,8 @@ const (
 )
 
 var spiralOrderDirections = [][]int{
-	{0, 1}, // go right
-	{1, 0}, // go down
+	{0, 1},  // go right
+	{1, 0},  // go down
 	{0, -1}, // go left
 	{-1, 0}, // go up
 }
@@ -19,7 +19,7 @@ func spiralOrder(matrix [][]int) []int {
 		return nil
 	}
 
-	ret := make([]int, 0, len(matrix) * len(matrix[0]))
+	ret := make([]int, 0, len(matrix)*len(matrix[0]))
 	var i, j int
 	border := []int{-1, len(matrix[0]), len(matrix), -1}
 	diridx := top
@@ -39,7 +39,7 @@ func spiralOrder(matrix [][]int) []int {
 		} else {
 			border[diridx]--
 		}
-		diridx = (diridx+1) % 4
+		diridx = (diridx + 1) % 4
 	}
 
 	return ret

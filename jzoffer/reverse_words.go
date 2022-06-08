@@ -13,7 +13,7 @@ func reverseWords(s string) string {
 		} else if wordstart != -1 && v == ' ' {
 			// reverse the word and insert into the place beginning with i
 			reverseWord(bs[wordstart:i])
-			for off:=0; off<i-wordstart; off++ {
+			for off := 0; off < i-wordstart; off++ {
 				bs[input] = bs[wordstart+off]
 				input++
 			}
@@ -28,8 +28,8 @@ func reverseWords(s string) string {
 	}
 
 	if wordstart != -1 {
-		reverseWord(bs[wordstart:len(bs)])
-		for off:=0; off<len(bs)-wordstart; off++ {
+		reverseWord(bs[wordstart:])
+		for off := 0; off < len(bs)-wordstart; off++ {
 			bs[input] = bs[wordstart+off]
 			input++
 		}
@@ -44,8 +44,7 @@ func reverseWords(s string) string {
 
 func reverseWord(word []byte) {
 	// fmt.Println(string(word))
-	for i:=0; i<len(word)/2; i++ {
+	for i := 0; i < len(word)/2; i++ {
 		word[i], word[len(word)-1-i] = word[len(word)-1-i], word[i]
 	}
 }
-

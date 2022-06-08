@@ -1,7 +1,9 @@
 package jzoffer
 
 func findNthDigit(n int) int {
-	if n < 10 { return n }
+	if n < 10 {
+		return n
+	}
 
 	usedDigits := 1
 	mult := 1
@@ -10,7 +12,7 @@ func findNthDigit(n int) int {
 	remaining := n
 	for {
 		usedDigits += nDigits * mult * 9
-		if n -usedDigits < 0 {
+		if n-usedDigits < 0 {
 			break
 		}
 		remaining = n - usedDigits
@@ -18,8 +20,8 @@ func findNthDigit(n int) int {
 		nDigits++
 	}
 
-	num := mult + remaining /nDigits
-	digit := nDigits - remaining %nDigits - 1
+	num := mult + remaining/nDigits
+	digit := nDigits - remaining%nDigits - 1
 
 	for digit > 0 {
 		num /= 10

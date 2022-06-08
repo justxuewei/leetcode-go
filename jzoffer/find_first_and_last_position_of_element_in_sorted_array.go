@@ -1,7 +1,9 @@
 package jzoffer
 
 func searchRange(nums []int, target int) []int {
-	if len(nums) == 0 { return []int{-1, -1} }
+	if len(nums) == 0 {
+		return []int{-1, -1}
+	}
 	start, end := 0, len(nums)-1
 	for start <= end {
 		mid := (start + end) / 2

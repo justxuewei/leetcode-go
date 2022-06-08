@@ -7,14 +7,18 @@ import "math"
 const null = math.MinInt32
 
 func kthLargest(root *TreeNode, k int) int {
-	if root == nil { return 0 }
+	if root == nil {
+		return 0
+	}
 	kth := null
 	reversedinorder(root, &k, &kth)
 	return kth
 }
 
 func reversedinorder(root *TreeNode, k, v *int) {
-	if root == nil { return }
+	if root == nil {
+		return
+	}
 	reversedinorder(root.Right, k, v)
 	*k--
 	if *k == 0 {

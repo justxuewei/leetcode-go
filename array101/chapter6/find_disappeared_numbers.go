@@ -11,7 +11,7 @@ func findDisappearedNumbers(nums []int) []int {
 
 	ret := make([]int, 0)
 	for i, v := range nums {
-		if v != i + 1 {
+		if v != i+1 {
 			ret = append(ret, i+1)
 		}
 	}

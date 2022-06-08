@@ -2,7 +2,7 @@ package bytedance
 
 func heapSort(nums []int) {
 	// build heap
-	parent := parentIndex(len(nums)-1)
+	parent := parentIndex(len(nums) - 1)
 	for parent >= 0 {
 		if isSwapped, child := swapMaxChild(nums, parent); isSwapped {
 			newParent := child
@@ -37,7 +37,7 @@ func parentIndex(i int) int {
 }
 
 func childrenIndexes(i int) (int, int) {
-	return 2 * (i + 1) - 1, (2 * (i + 1) + 1) - 1
+	return 2*(i+1) - 1, (2*(i+1) + 1) - 1
 }
 
 func swapMaxChild(nums []int, parent int) (bool, int) {
@@ -62,5 +62,3 @@ func swapMaxChild(nums []int, parent int) (bool, int) {
 	}
 	return false, -1
 }
-
-

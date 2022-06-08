@@ -1,9 +1,11 @@
 package jzoffer
 
 func getKthFromEnd(head *ListNode, k int) *ListNode {
-	if head == nil || k == 0 { return nil }
+	if head == nil || k == 0 {
+		return nil
+	}
 	p1, p2 := head, head
-	for i:=0; i<k; i++ {
+	for i := 0; i < k; i++ {
 		if p2 == nil {
 			return nil
 		}

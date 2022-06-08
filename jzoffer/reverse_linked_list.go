@@ -3,7 +3,9 @@ package jzoffer
 // https://leetcode.com/problems/reverse-linked-list/
 // https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/
 func reverseList(head *ListNode) *ListNode {
-	if head == nil || head.Next == nil { return head }
+	if head == nil || head.Next == nil {
+		return head
+	}
 
 	p1, p2 := head, head.Next
 	p1.Next = nil

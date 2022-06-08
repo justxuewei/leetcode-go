@@ -11,7 +11,7 @@ func TestHeapSort(t *testing.T) {
 	heapSort(case2)
 	t.Log(case2)
 
-	case3 := []int{5,2,6}
+	case3 := []int{5, 2, 6}
 	heapSort(case3)
 	t.Log(case3)
 }

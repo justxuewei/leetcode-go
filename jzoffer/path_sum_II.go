@@ -8,7 +8,9 @@ func pathSum(root *TreeNode, target int) [][]int {
 }
 
 func dfs3(node *TreeNode, target, cntsum int, path *[]int, paths *[][]int) {
-	if node == nil { return }
+	if node == nil {
+		return
+	}
 	newsum := cntsum + node.Val
 	*path = append(*path, node.Val)
 	if isLeaf(node) && newsum == target {

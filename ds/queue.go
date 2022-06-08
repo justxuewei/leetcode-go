@@ -1,10 +1,10 @@
 package ds
 
-//var QueueNoSpace = errors.New("the length of the queue exceeds the capacity")
-//var QueueNoElem = errors.New("there is no elements")
+// var QueueNoSpace = errors.New("the length of the queue exceeds the capacity")
+// var QueueNoElem = errors.New("there is no elements")
 
 type Queue struct {
-	arr []interface{}
+	arr  []interface{}
 	head int
 	tail int
 }
@@ -47,5 +47,5 @@ func (queue *Queue) Len() int {
 }
 
 func (queue *Queue) Tail() interface{} {
-	return queue.arr[(queue.tail - 1 + len(queue.arr)) % len(queue.arr)]
+	return queue.arr[(queue.tail-1+len(queue.arr))%len(queue.arr)]
 }

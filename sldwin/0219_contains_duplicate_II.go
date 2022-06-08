@@ -7,7 +7,7 @@ func containsNearbyDuplicate(nums []int, k int) bool {
 
 	set := make(map[int]bool, k+1)
 
-	for i:=0; i<len(nums); i++ {
+	for i := 0; i < len(nums); i++ {
 		if _, ok := set[nums[i]]; ok {
 			return true
 		}

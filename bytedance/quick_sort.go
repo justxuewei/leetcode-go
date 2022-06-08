@@ -1,11 +1,13 @@
 package bytedance
 
 func quickSort(arr []int) {
-	if len(arr) <= 1 { return }
+	if len(arr) <= 1 {
+		return
+	}
 
 	pivot := arr[0]
 	curIdx := 1
-	for i:=len(arr)-1; i>=curIdx; {
+	for i := len(arr) - 1; i >= curIdx; {
 		if arr[i] < pivot {
 			arr[i], arr[curIdx] = arr[curIdx], arr[i]
 			curIdx++

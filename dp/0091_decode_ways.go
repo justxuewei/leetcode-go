@@ -13,9 +13,9 @@ func numDecodings(s string) int {
 
 	dp0, dp1 := 1, 1
 	var dpnow int
-	for i:=1; i<len(s); i++ {
-		cur, _ := strconv.Atoi(s[i:i+1])
-		prev, _ := strconv.Atoi(s[i-1:i+1])
+	for i := 1; i < len(s); i++ {
+		cur, _ := strconv.Atoi(s[i : i+1])
+		prev, _ := strconv.Atoi(s[i-1 : i+1])
 
 		if cur == 0 {
 			if prev > 0 && prev <= 26 {

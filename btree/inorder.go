@@ -11,14 +11,18 @@ func InorderTraversalRecursively(root *TreeNode) []int {
 }
 
 func inorderTraversalRecursively(node *TreeNode, output *[]int) {
-	if node == nil { return }
+	if node == nil {
+		return
+	}
 	inorderTraversalRecursively(node.Left, output)
 	*output = append(*output, node.Val)
 	inorderTraversalRecursively(node.Right, output)
 }
 
 func inorderTraversalIteratively(root *TreeNode) []int {
-	if root == nil { return nil }
+	if root == nil {
+		return nil
+	}
 
 	var output []int
 	crtNode := root
@@ -31,7 +35,9 @@ func inorderTraversalIteratively(root *TreeNode) []int {
 			var tmpNode *TreeNode
 			for {
 				topElem, err := stack.Pop()
-				if err != nil { return output }
+				if err != nil {
+					return output
+				}
 				tmpNode, _ = topElem.(*TreeNode)
 				output = append(output, tmpNode.Val)
 				if tmpNode.Right != nil {

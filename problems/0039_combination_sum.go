@@ -2,7 +2,7 @@ package problems
 
 func combinationSum(candidates []int, target int) [][]int {
 	var (
-		ret [][]int
+		ret  [][]int
 		path []int
 	)
 	combinationSumDfs(candidates, 0, target, path, &ret)
@@ -21,7 +21,7 @@ func combinationSumDfs(candidates []int, begin, remaining int, path []int, ret *
 
 	path = append(path, 0)
 
-	for i:=begin; i<len(candidates); i++ {
+	for i := begin; i < len(candidates); i++ {
 		path[len(path)-1] = candidates[i]
 		combinationSumDfs(candidates, i, remaining-candidates[i], path, ret)
 	}

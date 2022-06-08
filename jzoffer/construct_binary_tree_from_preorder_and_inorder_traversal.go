@@ -1,7 +1,9 @@
 package jzoffer
 
 func buildTree(preorder, inorder []int) *TreeNode {
-	if len(preorder) == 0 || len(inorder) == 0 { return nil }
+	if len(preorder) == 0 || len(inorder) == 0 {
+		return nil
+	}
 	root := &TreeNode{Val: preorder[0]}
 	inorderMid := -1
 	for i, v := range inorder {

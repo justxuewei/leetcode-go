@@ -10,7 +10,7 @@ type WeightedPicker struct {
 }
 
 func NewWeightedPicker(w []int) WeightedPicker {
-	for i:=1; i<len(w); i++ {
+	for i := 1; i < len(w); i++ {
 		w[i] += w[i-1]
 	}
 	return WeightedPicker{

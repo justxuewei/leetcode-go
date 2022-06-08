@@ -29,7 +29,7 @@ func reversePairs(nums []int) int {
 		}
 	}
 
-	for ; i<len(nums); i++ {
+	for ; i < len(nums); i++ {
 		if len(left) == 0 {
 			nums[i] = right[0]
 			right = right[1:]

@@ -1,7 +1,9 @@
 package jzoffer
 
 func exist(board [][]byte, word string) bool {
-	if len(board) == 0 || len(board[0]) == 0 { return false }
+	if len(board) == 0 || len(board[0]) == 0 {
+		return false
+	}
 
 	hlen, vlen := len(board[0]), len(board)
 	// init visited
@@ -9,8 +11,8 @@ func exist(board [][]byte, word string) bool {
 	for i := range visited {
 		visited[i] = make([]bool, hlen)
 	}
-	for i:=0; i<vlen; i++ {
-		for j:=0; j<hlen; j++ {
+	for i := 0; i < vlen; i++ {
+		for j := 0; j < hlen; j++ {
 			if searchWord(board, visited, i, j, word, 0) {
 				return true
 			}
@@ -20,11 +22,13 @@ func exist(board [][]byte, word string) bool {
 }
 
 func searchWord(board [][]byte, visited [][]bool, i, j int, word string, wordlen int) bool {
-	if i < 0 || j < 0 || i >= len(board) || j >= len(board[0]) || visited[i][j] { return false }
+	if i < 0 || j < 0 || i >= len(board) || j >= len(board[0]) || visited[i][j] {
+		return false
+	}
 	if string(word[wordlen]) != string(board[i][j]) {
 		return false
 	}
-	newwordlen := wordlen+1
+	newwordlen := wordlen + 1
 	if newwordlen == len(word) {
 		return true
 	}
@@ -41,14 +45,16 @@ func searchWord(board [][]byte, visited [][]bool, i, j int, word string, wordlen
 }
 
 var dir = [][]int{
-	[]int{0, 1},
-	[]int{0, -1},
-	[]int{1, 0},
-	[]int{-1, 0},
+	{0, 1},
+	{0, -1},
+	{1, 0},
+	{-1, 0},
 }
 
 func exist1(board [][]byte, word string) bool {
-	if len(board) == 0 || len(board[0]) == 0 { return false }
+	if len(board) == 0 || len(board[0]) == 0 {
+		return false
+	}
 
 	hlen, vlen := len(board[0]), len(board)
 	// init visited
@@ -56,8 +62,8 @@ func exist1(board [][]byte, word string) bool {
 	for i := range visited {
 		visited[i] = make([]bool, hlen)
 	}
-	for i:=0; i<vlen; i++ {
-		for j:=0; j<hlen; j++ {
+	for i := 0; i < vlen; i++ {
+		for j := 0; j < hlen; j++ {
 			if searchWord1(board, visited, i, j, word, 0) {
 				return true
 			}

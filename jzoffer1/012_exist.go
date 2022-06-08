@@ -14,7 +14,7 @@ func exist(board [][]byte, word string) bool {
 	for i := range board {
 		for j := range board[0] {
 			if word[0] == board[i][j] {
-				if existDfs(board, visited, i, j ,0, word) {
+				if existDfs(board, visited, i, j, 0, word) {
 					return true
 				}
 			}
@@ -32,7 +32,7 @@ func existDfs(board [][]byte, visited [][]bool, i, j, iword int, word string) bo
 
 	var (
 		nexti, nextj int
-		ret bool
+		ret          bool
 	)
 	for _, dir := range existDirection {
 		nexti = dir[0] + i

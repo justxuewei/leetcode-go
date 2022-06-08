@@ -13,7 +13,7 @@ func permutation(s string) []string {
 
 	for i := range s {
 		root := s[i]
-		p := permutation(s[:i]+s[i+1:])
+		p := permutation(s[:i] + s[i+1:])
 		for j := range p {
 			p[j] = fmt.Sprintf("%c%s", root, p[j])
 		}

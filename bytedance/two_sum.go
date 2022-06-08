@@ -8,7 +8,9 @@ func twoSum(nums []int, target int) []int {
 	for i, v := range nums {
 		key := target - v
 		if ai, ok := hmap[key]; ok {
-			if i == ai { continue }
+			if i == ai {
+				continue
+			}
 			return []int{i, ai}
 		}
 	}

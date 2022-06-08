@@ -10,13 +10,13 @@ func thirdMax(nums []int) int {
 	length := 1
 	startIndex := 0
 
-	for i:=1; i<len(nums); i++ {
+	for i := 1; i < len(nums); i++ {
 		if length == 3 {
 			startIndex = i
 			break
 		}
 		flag := false
-		for j:=0; j<length; j++ {
+		for j := 0; j < length; j++ {
 			if nums[i] == topArr[j] {
 				flag = true
 				break
@@ -29,9 +29,11 @@ func thirdMax(nums []int) int {
 	}
 
 	quickSort(topArr[:length])
-	if length < 3 { return topArr[length-1] }
+	if length < 3 {
+		return topArr[length-1]
+	}
 
-	for i:=startIndex; i<len(nums); i++ {
+	for i := startIndex; i < len(nums); i++ {
 		switch {
 		case nums[i] > topArr[0] && nums[i] < topArr[1]:
 			topArr[0] = nums[i]

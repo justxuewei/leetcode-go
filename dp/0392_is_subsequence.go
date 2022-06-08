@@ -1,8 +1,12 @@
 package dp
 
 func isSubsequence(s string, t string) bool {
-	if len(s) == 0 { return true }
-	if len(t) == 0 { return false }
+	if len(s) == 0 {
+		return true
+	}
+	if len(t) == 0 {
+		return false
+	}
 	matchidx := 0
 	for i := range t {
 		if t[i] == s[matchidx] {

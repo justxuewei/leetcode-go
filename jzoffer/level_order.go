@@ -36,21 +36,25 @@ func (q *Queue) Dequeue() (node *TreeNode) {
 }
 
 func (q *Queue) Head() *TreeNode {
-	if q.head.next == nil { return nil }
+	if q.head.next == nil {
+		return nil
+	}
 	return q.head.next.Node
 }
 
 // ---- QueueNode ----
 
 type queueNode struct {
-	Node *TreeNode
+	Node       *TreeNode
 	prev, next *queueNode
 }
 
 // ---- Main ----
 
 func levelOrder(root *TreeNode) []int {
-	if root == nil { return nil }
+	if root == nil {
+		return nil
+	}
 
 	queue := NewQueue()
 	var ret []int

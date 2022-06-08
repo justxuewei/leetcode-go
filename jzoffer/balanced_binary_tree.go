@@ -7,7 +7,9 @@ func isBalanced(root *TreeNode) bool {
 }
 
 func dfs2(node *TreeNode, height int) int {
-	if node == nil { return height }
+	if node == nil {
+		return height
+	}
 	lefth := dfs2(node.Left, height+1)
 	righth := dfs2(node.Right, height+1)
 

@@ -7,12 +7,12 @@ func isMatch(s string, p string) bool {
 		dp[i] = make([]bool, len(p)+1)
 	}
 	dp[0][0] = true
-	for j:=2; j<=len(p); j+=2 {
+	for j := 2; j <= len(p); j += 2 {
 		dp[0][j] = dp[0][j-2] && p[j-1] == '*'
 	}
 	// match pattern
-	for i:=1; i<=len(s); i++ {
-		for j:=1; j<=len(p); j++ {
+	for i := 1; i <= len(s); i++ {
+		for j := 1; j <= len(p); j++ {
 			if p[j-1] == '*' {
 				if dp[i][j-2] {
 					dp[i][j] = true

@@ -2,8 +2,9 @@ package btree
 
 import (
 	"errors"
-	ds "github.com/xavier-niu/leetcode/ds"
 	"log"
+
+	ds "github.com/xavier-niu/leetcode/ds"
 )
 
 const treeNodeQueueCapacity = 100
@@ -11,16 +12,18 @@ const treeNodeQueueCapacity = 100
 var EmptyTree = errors.New("the amount of tree node should greater than 1")
 
 type TreeNode struct {
-	Val int
-	Left *TreeNode
+	Val   int
+	Left  *TreeNode
 	Right *TreeNode
 }
 
 // ref: https://stackoverflow.com/questions/6878590/the-maximum-value-for-an-int-type-in-go
-const Null = -int(^uint(0) >> 1) - 1
+const Null = -int(^uint(0)>>1) - 1
 
 func GenerateBinaryTree(arr []int) (*TreeNode, error) {
-	if len(arr) == 0 { return nil, EmptyTree }
+	if len(arr) == 0 {
+		return nil, EmptyTree
+	}
 
 	root := &TreeNode{Val: arr[0]}
 
@@ -43,7 +46,9 @@ func GenerateBinaryTree(arr []int) (*TreeNode, error) {
 		}
 
 		// Left
-		if len(arr) == idx { break }
+		if len(arr) == idx {
+			break
+		}
 		if arr[idx] != Null {
 			node.Left = &TreeNode{Val: arr[idx]}
 			err = queue.Enqueue(node.Left)
@@ -53,7 +58,9 @@ func GenerateBinaryTree(arr []int) (*TreeNode, error) {
 		}
 		idx++
 		// Right
-		if len(arr) == idx { break }
+		if len(arr) == idx {
+			break
+		}
 		if arr[idx] != Null {
 			node.Right = &TreeNode{Val: arr[idx]}
 			err = queue.Enqueue(node.Right)

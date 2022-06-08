@@ -3,16 +3,15 @@ package problems
 // FAILED
 
 type BiLinkNode struct {
-	Key, Val int
+	Key, Val   int
 	Prev, Next *BiLinkNode
 }
 
 type LRUCache struct {
-	Data map[int]*BiLinkNode
+	Data       map[int]*BiLinkNode
 	Head, Tail *BiLinkNode
-	Cap int
+	Cap        int
 }
-
 
 func NewLRUCache(capacity int) LRUCache {
 	head := &BiLinkNode{}
@@ -20,10 +19,9 @@ func NewLRUCache(capacity int) LRUCache {
 		Data: make(map[int]*BiLinkNode, capacity),
 		Head: head,
 		Tail: head,
-		Cap: capacity,
+		Cap:  capacity,
 	}
 }
-
 
 func (c *LRUCache) Get(key int) (ret int) {
 	if node, ok := c.Data[key]; ok {
@@ -46,8 +44,7 @@ func (c *LRUCache) Get(key int) (ret int) {
 	return -1
 }
 
-
-func (c *LRUCache) Put(key int, value int)  {
+func (c *LRUCache) Put(key int, value int) {
 	if node, ok := c.Data[key]; ok {
 		node.Val = value
 	}
@@ -68,6 +65,6 @@ func (c *LRUCache) Put(key int, value int)  {
 	} else if len(c.Data) == 0 {
 		c.Tail = newNode
 	}
-	
+
 	c.Data[key] = newNode
 }

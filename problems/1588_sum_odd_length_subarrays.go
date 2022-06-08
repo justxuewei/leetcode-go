@@ -5,7 +5,7 @@ func sumOddLengthSubarrays(arr []int) int {
 	for i := 1; i <= len(arr); i += 2 {
 		for j := 0; j < len(arr); j++ {
 			tmp = 0
-			if j + i > len(arr) {
+			if j+i > len(arr) {
 				continue
 			}
 			for k := j; k < j+i; k++ {

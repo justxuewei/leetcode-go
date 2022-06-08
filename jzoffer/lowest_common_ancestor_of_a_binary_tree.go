@@ -5,7 +5,7 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	dfs(root, p, &pathp)
 	dfs(root, q, &pathq)
 	n := min(len(pathp), len(pathq))
-	for i:=1; i<n; i++ {
+	for i := 1; i < n; i++ {
 		if pathp[i] != pathq[i] {
 			return pathp[i-1]
 		}
@@ -14,11 +14,15 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 }
 
 func dfs(root, node *TreeNode, path *[]*TreeNode) bool {
-	if root == nil { return false }
+	if root == nil {
+		return false
+	}
 
 	*path = append(*path, root)
 
-	if node == root { return true }
+	if node == root {
+		return true
+	}
 
 	if dfs(root.Left, node, path) {
 		return true
@@ -32,12 +36,16 @@ func dfs(root, node *TreeNode, path *[]*TreeNode) bool {
 }
 
 func min(lhs, rhs int) int {
-	if lhs < rhs { return lhs }
+	if lhs < rhs {
+		return lhs
+	}
 	return rhs
 }
 
 func lowestCommonAncestor1(root, p, q *TreeNode) *TreeNode {
-	if root == nil || root == p || root == q { return root }
+	if root == nil || root == p || root == q {
+		return root
+	}
 	left := lowestCommonAncestor(root.Left, p, q)
 	right := lowestCommonAncestor(root.Right, p, q)
 	if left != nil && right != nil {

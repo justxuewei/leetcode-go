@@ -1,10 +1,14 @@
 package chapter4
 
 func validMountainArray(arr []int) bool {
-	if len(arr) < 3 { return false }
+	if len(arr) < 3 {
+		return false
+	}
 	down := false
-	if arr[0] >= arr[1] { return false }
-	for i:=1; i<len(arr)-1; i++ {
+	if arr[0] >= arr[1] {
+		return false
+	}
+	for i := 1; i < len(arr)-1; i++ {
 		if !down && arr[i] >= arr[i+1] {
 			down = true
 		}
@@ -12,7 +16,9 @@ func validMountainArray(arr []int) bool {
 			return false
 		}
 	}
-	if !down { return false }
+	if !down {
+		return false
+	}
 	return true
 }
 
@@ -35,5 +41,5 @@ func standardSolution(arr []int) bool {
 		i++
 	}
 
-	return i + 1 == len(arr)
+	return i+1 == len(arr)
 }

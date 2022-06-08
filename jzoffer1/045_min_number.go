@@ -25,8 +25,8 @@ func (n Nums) Len() int {
 }
 
 func (n Nums) Less(i, j int) bool {
-	x, _ := strconv.Atoi(n[i]+n[j])
-	y, _ := strconv.Atoi(n[j]+n[i])
+	x, _ := strconv.Atoi(n[i] + n[j])
+	y, _ := strconv.Atoi(n[j] + n[i])
 	return x < y
 }
 

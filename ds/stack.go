@@ -14,7 +14,9 @@ func NewStack(capacity int) *Stack {
 }
 
 func (stack *Stack) Pop() (interface{}, error) {
-	if stack.Len() == 0 { return nil, NoElement }
+	if stack.Len() == 0 {
+		return nil, NoElement
+	}
 	lastElem := stack.arr[stack.Len()-1]
 	stack.arr = stack.arr[:stack.Len()-1]
 	return lastElem, nil
@@ -25,7 +27,9 @@ func (stack *Stack) Push(element interface{}) {
 }
 
 func (stack *Stack) TopElement() (interface{}, error) {
-	if stack.Len() == 0 { return nil, NoElement }
+	if stack.Len() == 0 {
+		return nil, NoElement
+	}
 	return stack.arr[stack.Len()-1], nil
 }
 

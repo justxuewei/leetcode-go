@@ -5,7 +5,9 @@ import (
 )
 
 func preorderTraversalRecursively(root *TreeNode, output []int) []int {
-	if root == nil { return output }
+	if root == nil {
+		return output
+	}
 	if output == nil {
 		output = make([]int, 0)
 	}
@@ -16,7 +18,9 @@ func preorderTraversalRecursively(root *TreeNode, output []int) []int {
 }
 
 func preorderTraversalIteratively(root *TreeNode) []int {
-	if root == nil { return nil }
+	if root == nil {
+		return nil
+	}
 	output := make([]int, 0)
 
 	stack := ds.NewStackWithoutCap()
@@ -30,9 +34,13 @@ func preorderTraversalIteratively(root *TreeNode) []int {
 			var tmpNode *TreeNode
 			for {
 				elem, err := stack.Pop()
-				if err != nil { break }
+				if err != nil {
+					break
+				}
 				tmpNode, _ = elem.(*TreeNode)
-				if tmpNode.Right != nil { break }
+				if tmpNode.Right != nil {
+					break
+				}
 			}
 			if tmpNode == nil { // there is no more nodes in stack
 				break

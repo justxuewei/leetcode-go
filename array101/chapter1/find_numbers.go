@@ -15,7 +15,9 @@ func findNumbers(nums []int) int {
 			tmp /= 10
 			i++
 		}
-		if i % 2 == 0 { num++ }
+		if i%2 == 0 {
+			num++
+		}
 	}
 	return num
 }

@@ -6,7 +6,7 @@ import (
 )
 
 type MedianFinder struct {
-	left *IntMaxHeap
+	left  *IntMaxHeap
 	right *IntMinHeap
 }
 
@@ -15,19 +15,19 @@ func NewMedianFinder() MedianFinder {
 	heap.Init(left)
 	heap.Init(right)
 	return MedianFinder{
-		left: left,
+		left:  left,
 		right: right,
 	}
 }
 
-func (f *MedianFinder) AddNum(num int)  {
+func (f *MedianFinder) AddNum(num int) {
 	if f.left.Len() == 0 || (*f.left)[0] >= num {
 		heap.Push(f.left, num)
 	} else {
 		heap.Push(f.right, num)
 	}
 
-	if math.Abs(float64(f.left.Len() - f.right.Len())) > 1 {
+	if math.Abs(float64(f.left.Len()-f.right.Len())) > 1 {
 		if f.left.Len() > f.right.Len() {
 			heap.Push(f.right, heap.Pop(f.left))
 		} else {
@@ -35,7 +35,6 @@ func (f *MedianFinder) AddNum(num int)  {
 		}
 	}
 }
-
 
 func (f *MedianFinder) FindMedian() float64 {
 	if f.left.Len() == f.right.Len() {
@@ -71,7 +70,7 @@ func (h *IntMinHeap) Pop() interface{} {
 	old := *h
 	n := len(old)
 	x := old[n-1]
-	*h = old[0: n-1]
+	*h = old[0 : n-1]
 	return x
 }
 
@@ -99,6 +98,6 @@ func (h *IntMaxHeap) Pop() interface{} {
 	old := *h
 	n := len(old)
 	x := old[n-1]
-	*h = old[0: n-1]
+	*h = old[0 : n-1]
 	return x
 }

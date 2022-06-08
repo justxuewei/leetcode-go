@@ -4,19 +4,23 @@ import "sort"
 
 // sort
 func getLeastNumbers(arr []int, k int) []int {
-	if len(arr) == 0 { return nil }
+	if len(arr) == 0 {
+		return nil
+	}
 	sort.Ints(arr)
 	return arr[:k]
 }
 
 // heap
 func getLeastNumbers1(arr []int, k int) []int {
-	if len(arr) == 0 || k == 0 { return nil }
+	if len(arr) == 0 || k == 0 {
+		return nil
+	}
 	maxHeap := maxHeapInit(arr[:k])
 	if len(arr) == k {
 		return maxHeap
 	}
-	for i:=k; i<len(arr); i++ {
+	for i := k; i < len(arr); i++ {
 		if maxHeap[0] > arr[i] {
 			maxHeap[0] = arr[i]
 			keepMaxHeapFromTopToBottom(maxHeap, 0)
@@ -31,7 +35,7 @@ func maxHeapInit(elements []int) []int {
 	for i, v := range elements {
 		heap[i] = v
 	}
-	for p:=parent(len(heap)-1); p>=0; p-- {
+	for p := parent(len(heap) - 1); p >= 0; p-- {
 		keepMaxHeapFromTopToBottom(heap, p)
 	}
 	return heap
@@ -42,7 +46,7 @@ func parent(i int) int {
 }
 
 func children(i int) (int, int) {
-	return 2*(i+1)-1, 2*(i+1)
+	return 2*(i+1) - 1, 2 * (i + 1)
 }
 
 func maxChild(heap []int, p int) int {
@@ -62,7 +66,7 @@ func maxChild(heap []int, p int) int {
 
 func keepMaxHeapFromTopToBottom(heap []int, p int) {
 	// c is an index of max child, sp is an index of subparent
-	for c, sp:=maxChild(heap, p), p; c!=-1; sp, c=c, maxChild(heap, c) {
+	for c, sp := maxChild(heap, p), p; c != -1; sp, c = c, maxChild(heap, c) {
 		if heap[sp] >= heap[c] {
 			break
 		}
@@ -71,13 +75,17 @@ func keepMaxHeapFromTopToBottom(heap []int, p int) {
 }
 
 func getLeastNumbers2(arr []int, k int) []int {
-	if len(arr) == 0 || k == 0 { return nil }
+	if len(arr) == 0 || k == 0 {
+		return nil
+	}
 	quicksort(arr, 0, len(arr)-1, k)
 	return arr[:k]
 }
 
 func quicksort(arr []int, i, j, k int) {
-	if i < 0 || j >= len(arr) || j - i < 1 { return }
+	if i < 0 || j >= len(arr) || j-i < 1 {
+		return
+	}
 	a, b := i+1, j
 	for a <= b {
 		if arr[b] < arr[i] {
@@ -88,12 +96,11 @@ func quicksort(arr []int, i, j, k int) {
 		b--
 	}
 	arr[i], arr[a-1] = arr[a-1], arr[i]
-	if k == a - 1 {
+	if k == a-1 {
 		return
-	} else if k > a - 1 {
+	} else if k > a-1 {
 		quicksort(arr, a, j, k)
 	} else {
 		quicksort(arr, i, a-2, k)
 	}
 }
-

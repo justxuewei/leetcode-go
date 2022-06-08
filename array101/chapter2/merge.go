@@ -1,7 +1,9 @@
 package array101
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	if n == 0 { return }
+	if n == 0 {
+		return
+	}
 	if m == 0 {
 		for i, v := range nums2 {
 			nums1[i] = v
@@ -27,7 +29,7 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 
 	i := 0
 	j := 0
-	for ; i<leftLen; i++ {
+	for ; i < leftLen; i++ {
 		cur := left[i]
 		for j < rightLen && cur > right[j] {
 			tmp[i+j] = right[j]
@@ -36,7 +38,7 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 		tmp[i+j] = left[i]
 	}
 
-	for ; j<rightLen; j++ {
+	for ; j < rightLen; j++ {
 		tmp[i+j] = right[j]
 	}
 

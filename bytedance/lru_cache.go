@@ -1,8 +1,8 @@
 package bytedance
 
 type LRUCacheNode struct {
-	Key int
-	Val int
+	Key  int
+	Val  int
 	next *LRUCacheNode
 	prev *LRUCacheNode
 }
@@ -75,7 +75,9 @@ func (cache *LRUCache) Put(key int, value int) {
 }
 
 func (cache *LRUCache) moveToHead(node *LRUCacheNode) {
-	if node == cache.Head { return }
+	if node == cache.Head {
+		return
+	}
 	if node == cache.Tail {
 		cache.Tail = cache.Tail.prev
 		cache.Tail.next = nil

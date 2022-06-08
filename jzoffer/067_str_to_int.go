@@ -5,7 +5,9 @@ import (
 )
 
 func strToInt(str string) int {
-	if len(str) == 0 { return 0 }
+	if len(str) == 0 {
+		return 0
+	}
 	// remove space
 	strbytes := []byte(str)
 	for i := range strbytes {
@@ -29,18 +31,18 @@ func strToInt(str string) int {
 	}
 	// num
 	var ret int
-	for i:=0; i<len(strbytes) && strbytes[i] >= '0' && strbytes[i] <= '9'; i++ {
+	for i := 0; i < len(strbytes) && strbytes[i] >= '0' && strbytes[i] <= '9'; i++ {
 		var tmp int
 		if sign == '-' {
-			if ret < bound || (ret == bound && int(strbytes[i] - '0') > 8) {
+			if ret < bound || (ret == bound && int(strbytes[i]-'0') > 8) {
 				return math.MinInt32
 			}
-			tmp = ret * 10 - int(strbytes[i] - '0')
+			tmp = ret*10 - int(strbytes[i]-'0')
 		} else {
-			if ret > bound || (ret == bound && int(strbytes[i] - '0') > 7) {
+			if ret > bound || (ret == bound && int(strbytes[i]-'0') > 7) {
 				return math.MaxInt32
 			}
-			tmp = ret * 10 + int(strbytes[i] - '0')
+			tmp = ret*10 + int(strbytes[i]-'0')
 		}
 		ret = tmp
 	}

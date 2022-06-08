@@ -8,7 +8,7 @@ const (
 )
 
 type Node struct {
-	Key int
-	color color
+	Key                 int
+	color               color
 	Left, Right, Parent *Node
 }

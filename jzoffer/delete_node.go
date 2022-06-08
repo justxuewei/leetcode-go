@@ -1,7 +1,9 @@
 package jzoffer
 
 func deleteNode(head *ListNode, val int) *ListNode {
-	if head == nil { return nil }
+	if head == nil {
+		return nil
+	}
 	prep, p := head, head
 	for p.Val != val && p != nil {
 		prep = p

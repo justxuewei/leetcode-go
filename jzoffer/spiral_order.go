@@ -1,12 +1,14 @@
 package jzoffer
 
-var right = [2]int{0,1}
-var down = [2]int{1,0}
-var left = [2]int{0,-1}
-var up = [2]int{-1,0}
+var right = [2]int{0, 1}
+var down = [2]int{1, 0}
+var left = [2]int{0, -1}
+var up = [2]int{-1, 0}
 
 func spiralOrder(matrix [][]int) []int {
-	if len(matrix) == 0 { return nil }
+	if len(matrix) == 0 {
+		return nil
+	}
 	visited := make([][]int, len(matrix))
 	for i := range visited {
 		visited[i] = make([]int, len(matrix[i]))
@@ -21,9 +23,11 @@ func traversal(matrix, visited [][]int, x, y, i int, dir [2]int, ret []int) {
 		visited[x][y] = 1
 		ret[i] = matrix[x][y]
 		i++
-		if i == len(ret) { return }
+		if i == len(ret) {
+			return
+		}
 		nx, ny := x+dir[0], y+dir[1]
-		if nx<0 || nx>=len(matrix) || ny<0 || ny>=len(matrix[0]) || visited[nx][ny]==1 {
+		if nx < 0 || nx >= len(matrix) || ny < 0 || ny >= len(matrix[0]) || visited[nx][ny] == 1 {
 			break
 		}
 		x, y = nx, ny
@@ -44,31 +48,39 @@ func traversal(matrix, visited [][]int, x, y, i int, dir [2]int, ret []int) {
 }
 
 func spiralOrder1(matrix [][]int) []int {
-	if len(matrix) == 0 { return nil }
+	if len(matrix) == 0 {
+		return nil
+	}
 
 	ret := make([]int, 0, len(matrix)*len(matrix[0]))
 	r, b, l, t := len(matrix[0])-1, len(matrix)-1, 0, 0
 	for {
 		// from left to right
-		for i:=l; i<=r; i++ {
+		for i := l; i <= r; i++ {
 			ret = append(ret, matrix[t][i])
 		}
 		t++
-		if t > b { break }
+		if t > b {
+			break
+		}
 		// from top to bottom
-		for i:=t; i<=b; i++ {
+		for i := t; i <= b; i++ {
 			ret = append(ret, matrix[i][r])
 		}
 		r--
-		if l > r { break }
+		if l > r {
+			break
+		}
 		// from right to left
-		for i:=r; i>=l; i-- {
+		for i := r; i >= l; i-- {
 			ret = append(ret, matrix[b][i])
 		}
 		b--
-		if t > b { break }
+		if t > b {
+			break
+		}
 		// from bottom to top
-		for i:=b; i>=t; i-- {
+		for i := b; i >= t; i-- {
 			ret = append(ret, matrix[i][l])
 		}
 		l++
@@ -79,4 +91,3 @@ func spiralOrder1(matrix [][]int) []int {
 
 	return ret
 }
-

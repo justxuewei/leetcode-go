@@ -14,8 +14,12 @@ func findRepeatNumber(nums []int) int {
 
 func findRepeatNumber1(nums []int) int {
 	for i, v := range nums {
-		if i == v { continue }
-		if nums[v] == v { return v }
+		if i == v {
+			continue
+		}
+		if nums[v] == v {
+			return v
+		}
 		nums[i], nums[v] = nums[v], nums[i]
 	}
 	return -1

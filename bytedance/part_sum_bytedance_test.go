@@ -1,8 +1,9 @@
 package bytedance
 
 import (
-	btree "github.com/xavier-niu/leetcode/btree"
 	"testing"
+
+	btree "github.com/xavier-niu/leetcode/btree"
 )
 
 func TestPartSumBytedance(t *testing.T) {

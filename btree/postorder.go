@@ -5,19 +5,23 @@ import (
 )
 
 func postorderTraversalRecursively(root *TreeNode, output *[]int) {
-	if root == nil { return }
+	if root == nil {
+		return
+	}
 	postorderTraversalRecursively(root.Left, output)
 	postorderTraversalRecursively(root.Right, output)
 	*output = append(*output, root.Val)
 }
 
 type postorderTraversalStackItem struct {
-	node *TreeNode
+	node         *TreeNode
 	visitedRight bool
 }
 
 func postorderTraversalIteratively(root *TreeNode) []int {
-	if root == nil { return nil }
+	if root == nil {
+		return nil
+	}
 
 	output := make([]int, 0)
 	stack := ds.NewStackWithoutCap()
